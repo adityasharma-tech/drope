@@ -7,6 +7,19 @@ const BUCKET_NAME = process.env.UPLOAD_BUCKET || process.env.BUCKET_NAME || '';
 
 
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+    // Handle OPTIONS preflight immediately
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+            },
+            body: '',
+        };
+    }
+
     try {
         const projectId = event.pathParameters?.id;
         if (!projectId) {

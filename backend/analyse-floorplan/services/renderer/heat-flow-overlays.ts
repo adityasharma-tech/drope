@@ -192,7 +192,7 @@ export function calculateHeatFlowOverlays(
           uValueWm2K: assumptions.exteriorWallUValue,
           areaM2: wallAreaM2 ?? 0,
           deltaTemperatureK: deltaT,
-        } satisfies ConductiveHeatOverlay);
+        });
       }
     }
 
@@ -250,7 +250,7 @@ export function calculateHeatFlowOverlays(
             uValueWm2K: assumptions.interiorPartitionUValue,
             areaM2: 0,
             deltaTemperatureK: (stateByRoomId.get(adjId)?.temperatureC ?? state.temperatureC) - state.temperatureC,
-          } satisfies ConductiveHeatOverlay);
+          });
           continue;
         }
 
@@ -282,7 +282,7 @@ export function calculateHeatFlowOverlays(
           uValueWm2K: assumptions.interiorPartitionUValue,
           areaM2,
           deltaTemperatureK: adjTempC - state.temperatureC,
-        } satisfies ConductiveHeatOverlay);
+        });
       }
     }
 
@@ -333,7 +333,7 @@ export function calculateHeatFlowOverlays(
           transmittedGainW: solarPerWindow,
           sunDirection: sunDir,
           orientationKnown: false, // Sample geometry has no northAngleDeg
-        } satisfies SolarRadiationOverlay);
+        });
       }
     }
   }

@@ -96,7 +96,7 @@ export function calculateAirflowOverlays(
         openingState: state,
         pathStart: { x: midX, y: midY - 20 },
         pathEnd: { x: midX, y: midY + 20 },
-      } satisfies VentilationOverlay);
+      });
     }
   }
 
@@ -138,7 +138,7 @@ export function calculateAirflowOverlays(
         isActive: true,
         coolingSetpointC: unit.coolingSetpointC ?? 24.0,
         heatingSetpointC: unit.heatingSetpointC ?? 20.0,
-      } satisfies HvacAirflowOverlay);
+      });
     }
   }
 
@@ -164,7 +164,7 @@ export function calculateAirflowOverlays(
         operatingMode: fan.operatingMode ?? 'clockwise',
         airflowM3s: fan.airflowM3s ?? 0.45,
         isFreshAirExchange: false,
-      } satisfies FanCirculationOverlay);
+      });
     }
   }
 
