@@ -24,7 +24,7 @@ Our platform analyzes floor plans and local environmental data to visualize pote
 
 - **Floor-plan analysis:** Extract rooms, walls, windows, and doors.
 - **Environmental intelligence:** Use weather, humidity, wind, and solar radiation data.
-- **Thermal mapping:** Work toward room-level temperature simulations and visual heat maps.
+- **Thermal mapping:** Develop room-level temperature simulations and visual heat maps.
 - **AI recommendations:** Explore smarter, energy-efficient design choices.
 
 ### AWS Architecture
@@ -35,13 +35,17 @@ Our platform analyzes floor plans and local environmental data to visualize pote
 
 We use **AWS SAM, AWS Lambda, Amazon API Gateway, Amazon S3, and AWS CloudFormation** to build our serverless foundation. We're also exploring **Amazon Bedrock** for AI-powered recommendations.
 
+### Domain & Networking
+
+We use **Cloudflare** for domain mapping and DNS management, helping connect our custom domain to the application and manage domain traffic.
+
 ### Our Vision
 
 We want to help homeowners, architects, and builders reduce indoor heat and energy consumption from the design stage itself. Our future business model includes transparent sponsorships and partnerships with brands offering heat-reflective paints, insulation, and energy-efficient cooling products.
 
 ### Built With
 
-**TypeScript · AWS · Serverless · Environmental Data · AI · Thermal Simulation**
+**TypeScript · AWS · Cloudflare · Serverless · Environmental Data · AI · Thermal Simulation**
 
 ---
 
