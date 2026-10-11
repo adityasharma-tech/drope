@@ -1,0 +1,418 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FloorPlanModel",
+  "description": "Structured digital building model converted from a 2D architectural floor plan image.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "imageMetadata",
+    "buildingMetadata",
+    "orientation",
+    "rooms",
+    "walls",
+    "openings",
+    "annotations",
+    "adjacencyGraph",
+    "connectivityGraph",
+    "exteriorExposedRoomIds",
+    "incompleteBoundaryRoomIds",
+    "validationWarnings",
+    "unresolvedAmbiguities",
+    "createdAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "example": "1.0"
+    },
+    "imageMetadata": {
+      "type": "object",
+      "required": ["source", "widthPixels", "heightPixels", "analyzedAt", "modelId"],
+      "properties": {
+        "source": { "type": "string", "example": "floor_plan.png" },
+        "widthPixels": { "type": "number", "example": 1920 },
+        "heightPixels": { "type": "number", "example": 1080 },
+        "analyzedAt": { "type": "string", "format": "date-time" },
+        "modelId": { "type": "string", "example": "gemini-2.5-flash" }
+      }
+    },
+    "buildingMetadata": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "example": "RESIDENCE FLOOR PLAN" },
+        "floorLevel": { "type": "string", "example": "Ground Floor" },
+        "totalFloors": { "type": "number", "example": 1 },
+        "totalFloorsSource": {
+          "type": "string",
+          "enum": ["annotated", "detected", "inferred", "unknown"]
+        },
+        "buildingWidthReal": { "$ref": "#/$defs/Dimension" },
+        "buildingDepthReal": { "$ref": "#/$defs/Dimension" },
+        "totalAreaReal": { "$ref": "#/$defs/Dimension" }
+      }
+    },
+    "scale": {
+      "type": "object",
+      "properties": {
+        "pixelLength": { "type": "number", "example": 800 },
+        "realLength": { "$ref": "#/$defs/Dimension" },
+        "pixelsPerUnit": { "type": "number", "example": 20 },
+        "source": {
+          "type": "string",
+          "enum": ["annotated", "detected", "inferred", "unknown"]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        }
+      }
+    },
+    "orientation": {
+      "type": "object",
+      "required": ["northAngleSource", "confidence"],
+      "properties": {
+        "northAngleDeg": { "type": "number", "example": 0, "description": "Degrees clockwise from image top" },
+        "northAngleSource": {
+          "type": "string",
+          "enum": ["annotated", "detected", "inferred", "unknown"]
+        },
+        "entranceFacing": { "type": "string", "example": "south" },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        }
+      }
+    },
+    "buildingFootprint": {
+      "$ref": "#/$defs/Polygon"
+    },
+    "rooms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "typeSource",
+          "boundary",
+          "boundingBox",
+          "wallIds",
+          "openingIds",
+          "adjacentRoomIds",
+          "connectedRoomIds",
+          "isExteriorExposed",
+          "confidence",
+          "validationWarnings"
+        ],
+        "properties": {
+          "id": { "type": "string", "example": "R1" },
+          "label": { "type": "string", "example": "BEDROOM #2" },
+          "type": {
+            "type": "string",
+            "enum": [
+              "bedroom",
+              "master-bedroom",
+              "bathroom",
+              "toilet",
+              "washroom",
+              "kitchen",
+              "dining",
+              "living",
+              "family-room",
+              "corridor",
+              "lobby",
+              "foyer",
+              "hallway",
+              "closet",
+              "storage",
+              "laundry",
+              "garage",
+              "balcony",
+              "terrace",
+              "study",
+              "staircase",
+              "lift",
+              "service",
+              "outdoor",
+              "unknown"
+            ]
+          },
+          "typeSource": {
+            "type": "string",
+            "enum": ["annotated", "detected", "inferred", "unknown"]
+          },
+          "boundary": { "$ref": "#/$defs/Polygon" },
+          "boundingBox": { "$ref": "#/$defs/BoundingBox" },
+          "areaReal": { "$ref": "#/$defs/Dimension" },
+          "areaPixels": { "type": "number" },
+          "perimeterPixels": { "type": "number" },
+          "annotatedWidth": { "$ref": "#/$defs/Dimension" },
+          "annotatedDepth": { "$ref": "#/$defs/Dimension" },
+          "wallIds": { "type": "array", "items": { "type": "string" } },
+          "openingIds": { "type": "array", "items": { "type": "string" } },
+          "adjacentRoomIds": { "type": "array", "items": { "type": "string" } },
+          "connectedRoomIds": { "type": "array", "items": { "type": "string" } },
+          "isExteriorExposed": { "type": "boolean" },
+          "exteriorWallIds": { "type": "array", "items": { "type": "string" } },
+          "fixtures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "category", "boundingBox", "confidence", "source"],
+              "properties": {
+                "id": { "type": "string", "example": "F1_R1" },
+                "category": {
+                  "type": "string",
+                  "enum": [
+                    "bed",
+                    "sofa",
+                    "chair",
+                    "table-dining",
+                    "table-other",
+                    "desk",
+                    "wardrobe",
+                    "kitchen-counter",
+                    "kitchen-sink",
+                    "kitchen-stove",
+                    "refrigerator",
+                    "toilet",
+                    "washbasin",
+                    "bathtub",
+                    "shower",
+                    "washer",
+                    "dryer",
+                    "stairs",
+                    "other",
+                    "unknown"
+                  ]
+                },
+                "label": { "type": "string", "example": "Bed" },
+                "boundingBox": { "$ref": "#/$defs/BoundingBox" },
+                "orientation": { "type": "number" },
+                "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+                "source": { "type": "string", "enum": ["annotated", "detected", "inferred", "unknown"] }
+              }
+            }
+          },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+          "validationWarnings": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "walls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "startPoint",
+          "endPoint",
+          "boundingRoomIds",
+          "isExterior",
+          "isExteriorSource",
+          "confidence"
+        ],
+        "properties": {
+          "id": { "type": "string", "example": "W1" },
+          "startPoint": { "$ref": "#/$defs/Point" },
+          "endPoint": { "$ref": "#/$defs/Point" },
+          "thicknessPixels": { "type": "number" },
+          "thicknessReal": { "$ref": "#/$defs/Dimension" },
+          "lengthReal": { "$ref": "#/$defs/Dimension" },
+          "orientation": {
+            "type": "string",
+            "enum": ["horizontal", "vertical", "diagonal"]
+          },
+          "boundingRoomIds": { "type": "array", "items": { "type": "string" } },
+          "isExterior": { "type": "boolean" },
+          "isExteriorSource": {
+            "type": "string",
+            "enum": ["annotated", "detected", "inferred", "unknown"]
+          },
+          "isLoadBearing": { "type": "boolean" },
+          "isLoadBearingSource": {
+            "type": "string",
+            "enum": ["annotated", "detected", "inferred", "unknown"]
+          },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+        }
+      }
+    },
+    "openings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "positionOnWall",
+          "connectsSpaceIds",
+          "isExterior",
+          "confidence",
+          "source"
+        ],
+        "properties": {
+          "id": { "type": "string", "example": "O1" },
+          "type": {
+            "type": "string",
+            "enum": [
+              "door-hinged",
+              "door-sliding",
+              "door-double",
+              "door-folding",
+              "door-unknown",
+              "window-sliding",
+              "window-casement",
+              "window-fixed",
+              "window-bay",
+              "window-unknown",
+              "ventilator",
+              "pass-through",
+              "open-connection",
+              "unknown"
+            ]
+          },
+          "wallId": { "type": "string" },
+          "positionOnWall": { "$ref": "#/$defs/Point" },
+          "widthReal": { "$ref": "#/$defs/Dimension" },
+          "heightReal": { "$ref": "#/$defs/Dimension" },
+          "widthPixels": { "type": "number" },
+          "hingePoint": { "$ref": "#/$defs/Point" },
+          "swingEndPoint": { "$ref": "#/$defs/Point" },
+          "swingDirection": {
+            "type": "string",
+            "enum": ["clockwise", "counter-clockwise", "unknown"]
+          },
+          "connectsSpaceIds": { "type": "array", "items": { "type": "string" } },
+          "isExterior": { "type": "boolean" },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+          "source": { "type": "string", "enum": ["annotated", "detected", "inferred", "unknown"] }
+        }
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "type", "position", "confidence"],
+        "properties": {
+          "id": { "type": "string", "example": "A1" },
+          "text": { "type": "string", "example": "BEDROOM #2 9'-0\" x 12'-0\"" },
+          "normalizedText": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": [
+              "room-label",
+              "room-dimension",
+              "wall-dimension",
+              "door-label",
+              "window-label",
+              "material-note",
+              "grid-label",
+              "level-label",
+              "north-arrow",
+              "scale-notation",
+              "legend",
+              "general-note",
+              "unknown"
+            ]
+          },
+          "position": { "$ref": "#/$defs/Point" },
+          "refObjectId": { "type": "string" },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+        }
+      }
+    },
+    "adjacencyGraph": {
+      "type": "object",
+      "description": "Physical wall-sharing adjacency between rooms (room_id -> adjacent_room_ids)",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "connectivityGraph": {
+      "type": "object",
+      "description": "Traversable connectivity via openings between rooms (room_id -> reachable_room_ids)",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "exteriorExposedRoomIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "incompleteBoundaryRoomIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "validationWarnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "code", "message"],
+        "properties": {
+          "severity": { "type": "string", "enum": ["error", "warning", "info"] },
+          "code": { "type": "string", "example": "SCALE_INCONSISTENCY" },
+          "message": { "type": "string" },
+          "objectIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "unresolvedAmbiguities": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "Point": {
+      "type": "object",
+      "required": ["x", "y"],
+      "properties": {
+        "x": { "type": "number", "description": "Pixel x coordinate from top-left" },
+        "y": { "type": "number", "description": "Pixel y coordinate from top-left" }
+      }
+    },
+    "BoundingBox": {
+      "type": "object",
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "width": { "type": "number" },
+        "height": { "type": "number" }
+      }
+    },
+    "Polygon": {
+      "type": "object",
+      "required": ["points"],
+      "properties": {
+        "points": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Point" }
+        }
+      }
+    },
+    "Dimension": {
+      "type": "object",
+      "required": ["value", "unit", "source"],
+      "properties": {
+        "value": { "type": "number" },
+        "unit": {
+          "type": "string",
+          "enum": ["mm", "cm", "m", "ft", "in", "ft²", "m²", "unknown"]
+        },
+        "source": {
+          "type": "string",
+          "enum": ["annotated", "detected", "inferred", "calculated", "unknown"]
+        },
+        "rawAnnotation": { "type": "string", "example": "9'-0\"" }
+      }
+    }
+  }
+}

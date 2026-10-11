@@ -5,6 +5,30 @@ Description: >
 
   Sample SAM Template for drope
 
+Parameters:
+  GeminiApiKey:
+    Type: String
+    Default: ''
+    NoEcho: true
+    Description: Google Gemini API Key
+  GeminiModel:
+    Type: String
+    Default: 'gemini-2.5-flash'
+    Description: Google Gemini model name
+  BedrockMantleApiKey:
+    Type: String
+    Default: ''
+    NoEcho: true
+    Description: Bedrock Mantle API Key (backup)
+  BedrockMantleEndpoint:
+    Type: String
+    Default: 'https://bedrock-mantle.ap-south-1.api.aws/v1/chat/completions'
+    Description: Bedrock Mantle OpenAI-compatible endpoint
+  BedrockMantleModelId:
+    Type: String
+    Default: 'qwen.qwen3-vl-235b-a22b-instruct'
+    Description: Bedrock Mantle Vision Model ID
+
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
@@ -57,12 +81,16 @@ Resources:
       Runtime: nodejs24.x
       Architectures:
       - x86_64
-      Timeout: 120
+      Timeout: 300
       MemorySize: 512
       Environment:
         Variables:
           UPLOAD_BUCKET: !Ref UploadBucket
-          BEDROCK_MODEL_ID: us.anthropic.claude-opus-4-5-20251101-v1:0
+          GEMINI_API_KEY: !Ref GeminiApiKey
+          GEMINI_MODEL: !Ref GeminiModel
+          BEDROCK_MANTLE_API_KEY: !Ref BedrockMantleApiKey
+          BEDROCK_MANTLE_ENDPOINT: !Ref BedrockMantleEndpoint
+          BEDROCK_MANTLE_MODEL_ID: !Ref BedrockMantleModelId
       Policies:
         - S3ReadPolicy:
             BucketName: !Ref UploadBucket

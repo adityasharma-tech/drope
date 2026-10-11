@@ -7,8 +7,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint '*.ts' --quiet --fix",
-    "compile": "tsc",
-    "extract": "ts-node run-extraction.ts"
+    "compile": "tsc"
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.1149.0",
