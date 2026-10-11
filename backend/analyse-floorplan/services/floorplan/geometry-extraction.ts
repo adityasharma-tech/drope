@@ -396,6 +396,36 @@ function stripMarkdown(raw: string): string {
     .trim();
 }
 
+/**
+ * Best-effort repair of a JSON string that was truncated mid-stream.
+ * Closes any unclosed strings, arrays, and objects so JSON.parse can succeed
+ * with partial but structurally valid data rather than throwing.
+ */
+function repairTruncatedJson(raw: string): string {
+  const stack: ('{' | '[')[] = [];
+  let inString = false;
+  let escaped = false;
+
+  for (let i = 0; i < raw.length; i++) {
+    const ch = raw[i];
+    if (escaped) { escaped = false; continue; }
+    if (ch === '\\' && inString) { escaped = true; continue; }
+    if (ch === '"') { inString = !inString; continue; }
+    if (inString) continue;
+    if (ch === '{') stack.push('{');
+    else if (ch === '[') stack.push('[');
+    else if (ch === '}' || ch === ']') stack.pop();
+  }
+
+  let repaired = raw.trimEnd();
+  if (inString) repaired += '"';                   // close open string
+  repaired = repaired.replace(/,\s*$/, '');        // remove trailing comma
+  for (let i = stack.length - 1; i >= 0; i--) {   // close open containers
+    repaired += stack[i] === '{' ? '}' : ']';
+  }
+  return repaired;
+}
+
 function buildAdditionalUserInstructions(input: ExtractionInput): string {
   const lines: string[] = [
     `Image source filename: ${input.sourceName}`,
@@ -561,9 +591,11 @@ export async function extractFloorPlanGeometry(
 
   // Build OpenAI-compatible chat completions payload.
   // Image is sent as a data URI in an image_url content block.
+  // max_tokens=32000: floor-plan JSON with 8+ rooms, walls, openings can easily
+  // reach 40 000+ characters; 16 000 was causing mid-JSON truncation.
   const requestPayload = {
     model: modelId,
-    max_tokens: 16000,
+    max_tokens: 32000,
     messages: [
       {
         role: 'system',
@@ -591,7 +623,7 @@ export async function extractFloorPlanGeometry(
 
   // Parse OpenAI-format response: choices[0].message.content
   let mantleResult: {
-    choices?: { message?: { content?: string } }[];
+    choices?: { finish_reason?: string; message?: { content?: string } }[];
     error?: { type: string; message: string };
   };
   try {
@@ -606,24 +638,63 @@ export async function extractFloorPlanGeometry(
     );
   }
 
-  const messageContent = mantleResult.choices?.[0]?.message?.content;
+  const choice = mantleResult.choices?.[0];
+  const messageContent = choice?.message?.content;
   if (!messageContent) {
     throw new Error(
       `Bedrock Mantle response contained no message content.\nFull response: ${rawResponse.slice(0, 500)}`,
     );
   }
 
+  const finishReason = choice?.finish_reason ?? 'unknown';
+  if (finishReason === 'length') {
+    console.warn(
+      `[geometry-extraction] WARNING: model response was truncated (finish_reason=length). ` +
+      `The JSON will be repaired automatically but some data at the end may be missing. ` +
+      `Consider increasing max_tokens or simplifying the schema.`,
+    );
+  }
+
   const cleaned = stripMarkdown(messageContent);
 
   let rawModel: FloorPlanModel;
-  try {
-    rawModel = JSON.parse(cleaned) as FloorPlanModel;
-  } catch (err) {
-    throw new Error(
-      `Mantle output could not be parsed as FloorPlanModel JSON.\n` +
-      `Parse error: ${(err as Error).message}\n` +
-      `Raw output (first 500 chars): ${cleaned.slice(0, 500)}`,
+
+  // First attempt: parse as-is
+  const firstParseResult = (() => {
+    try { return { ok: true as const, val: JSON.parse(cleaned) as FloorPlanModel }; }
+    catch (e) { return { ok: false as const, err: e as Error }; }
+  })();
+
+  if (firstParseResult.ok) {
+    rawModel = firstParseResult.val;
+  } else {
+    // Second attempt: repair truncation then parse
+    console.warn(
+      `[geometry-extraction] JSON parse failed (${firstParseResult.err.message}). ` +
+      `Attempting truncation repair…`,
     );
+    const repaired = repairTruncatedJson(cleaned);
+    try {
+      rawModel = JSON.parse(repaired) as FloorPlanModel;
+      console.warn(`[geometry-extraction] Truncation repair succeeded.`);
+      // Record as a validation warning so callers know
+      if (!rawModel.validationWarnings) rawModel.validationWarnings = [];
+      rawModel.validationWarnings.push({
+        severity: 'warning',
+        code: 'RESPONSE_TRUNCATED',
+        message:
+          `Model response was truncated at ${cleaned.length} characters and was automatically ` +
+          `repaired. Data near the end of the response (walls, openings, annotations) may be ` +
+          `incomplete. Re-run with a higher max_tokens budget if needed.`,
+      });
+    } catch (repairErr) {
+      throw new Error(
+        `Mantle output could not be parsed as FloorPlanModel JSON even after truncation repair.\n` +
+        `Original parse error: ${firstParseResult.err.message}\n` +
+        `Repair parse error: ${(repairErr as Error).message}\n` +
+        `Raw output (first 500 chars): ${cleaned.slice(0, 500)}`,
+      );
+    }
   }
 
   applyOverrides(rawModel, input);
