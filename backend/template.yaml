@@ -51,10 +51,10 @@ Resources:
       - x86_64
       Environment:
         Variables:
-          UPLOAD_BUCKET: !Ref UploadBucket
+          UPLOAD_BUCKET: !Sub '${AWS::StackName}-uploads-${AWS::AccountId}'
       Policies:
         - S3CrudPolicy:
-            BucketName: !Ref UploadBucket
+            BucketName: !Sub '${AWS::StackName}-uploads-${AWS::AccountId}'
       Events:
         GetUploadUrl:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -72,6 +72,8 @@ Resources:
 
   UploadBucket:
     Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-uploads-${AWS::AccountId}'
 
   AnalyzeFloorplanFunction:
     Type: AWS::Serverless::Function
@@ -85,7 +87,7 @@ Resources:
       MemorySize: 512
       Environment:
         Variables:
-          UPLOAD_BUCKET: !Ref UploadBucket
+          UPLOAD_BUCKET: !Sub '${AWS::StackName}-uploads-${AWS::AccountId}'
           GEMINI_API_KEY: !Ref GeminiApiKey
           GEMINI_MODEL: !Ref GeminiModel
           BEDROCK_MANTLE_API_KEY: !Ref BedrockMantleApiKey
@@ -93,15 +95,16 @@ Resources:
           BEDROCK_MANTLE_MODEL_ID: !Ref BedrockMantleModelId
       Policies:
         - S3ReadPolicy:
-            BucketName: !Ref UploadBucket
+            BucketName: !Sub '${AWS::StackName}-uploads-${AWS::AccountId}'
         - S3WritePolicy:
-            BucketName: !Ref UploadBucket
+            BucketName: !Sub '${AWS::StackName}-uploads-${AWS::AccountId}'
         - Statement:
             - Effect: Allow
               Action:
                 - bedrock:InvokeModel
+                - bedrock:InvokeModelWithResponseStream
               Resource:
-                - arn:aws:bedrock:*::foundation-model/us.anthropic.claude-opus-4-5-20251101-v1:0
+                - arn:aws:bedrock:*::foundation-model/*
       Events:
         FloorplanUploadEvent:
           Type: S3
@@ -122,19 +125,6 @@ Resources:
         EntryPoints:
         - app.ts
 
-  ApplicationResourceGroup:
-    Type: AWS::ResourceGroups::Group
-    Properties:
-      Name:
-        Fn::Sub: ApplicationInsights-SAM-${AWS::StackName}
-      ResourceQuery:
-        Type: CLOUDFORMATION_STACK_1_0
-  ApplicationInsightsMonitoring:
-    Type: AWS::ApplicationInsights::Application
-    Properties:
-      ResourceGroupName:
-        Ref: ApplicationResourceGroup
-      AutoConfigurationEnabled: 'true'
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -156,4 +146,4 @@ Outputs:
     Value: !GetAtt AnalyzeFloorplanFunctionRole.Arn
   UploadBucketName:
     Description: S3 bucket name for uploads
-    Value: !Ref UploadBucket
+    Value: !Sub '${AWS::StackName}-uploads-${AWS::AccountId}'

@@ -4,6 +4,7 @@ version = 0.1
 
 [default.global.parameters]
 stack_name = "drope"
+region = "us-east-1"
 
 [default.build.parameters]
 cached = true
@@ -16,6 +17,10 @@ lint = true
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = true
+s3_prefix = "drope"
+parameter_overrides = "GeminiModel=\"gemini-2.5-flash\" BedrockMantleEndpoint=\"https://bedrock-mantle.ap-south-1.api.aws/v1/chat/completions\" BedrockMantleModelId=\"qwen.qwen3-vl-235b-a22b-instruct\""
+image_repositories = []
+disable_rollback = true
 
 [default.package.parameters]
 resolve_s3 = true

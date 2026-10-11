@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 935" width="1200" height="935">
+  <desc>Scientific Thermal Visualization for FLOOR PLAN</desc>
+  <defs>
+    <!-- Arrowhead markers for physical heat-flux vectors -->
+    <marker id="heatArrowIn" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#ea580c" />
+    </marker>
+    <marker id="heatArrowOut" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <clipPath id="clip-R1">
+      <polygon points="230,180 410,180 410,300 230,300" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R1" cx="320.0" cy="240.0" r="108.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a2d2e5" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#97c9e0" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#97c9e0" stop-opacity="0.85" />
+    </radialGradient>
+    <clipPath id="clip-R2">
+      <polygon points="500,180 680,180 680,300 500,300" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R2" cx="590.0" cy="240.0" r="108.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a9d7e8" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#9dcee3" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#9dcee3" stop-opacity="0.85" />
+    </radialGradient>
+    <clipPath id="clip-R3">
+      <polygon points="710,180 770,180 770,300 710,300" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R3" cx="740.0" cy="240.0" r="67.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#99cbe1" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#8fc3dd" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#8fc3dd" stop-opacity="0.85" />
+    </radialGradient>
+    <clipPath id="clip-R4">
+      <polygon points="800,180 970,180 970,300 800,300" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R4" cx="885.0" cy="240.0" r="104.0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a9d7e8" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#9bcce2" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#9bcce2" stop-opacity="0.85" />
+    </radialGradient>
+    <clipPath id="clip-R5">
+      <polygon points="230,380 500,380 500,620 230,620" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R5" cx="365.0" cy="500.0" r="180.6" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#b8e0ed" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#abd9e9" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#abd9e9" stop-opacity="0.85" />
+    </radialGradient>
+    <clipPath id="clip-R6">
+      <polygon points="500,380 710,380 710,620 500,620" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R6" cx="605.0" cy="500.0" r="159.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c3e5f0" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#c3e5f0" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#c3e5f0" stop-opacity="0.85" />
+    </radialGradient>
+    <clipPath id="clip-R7">
+      <polygon points="710,380 800,380 800,620 710,620" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R7" cx="755.0" cy="500.0" r="128.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fedb8c" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#fedb8c" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#fedb8c" stop-opacity="0.85" />
+    </radialGradient>
+    <clipPath id="clip-R8">
+      <polygon points="800,380 940,380 940,450 800,450" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R8" cx="870.0" cy="415.0" r="78.3" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#b6deec" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#b6deec" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#b6deec" stop-opacity="0.85" />
+    </radialGradient>
+    <clipPath id="clip-R9">
+      <polygon points="800,480 970,480 970,620 800,620" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R9" cx="885.0" cy="550.0" r="110.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#b8dfed" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#a7d5e7" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#a7d5e7" stop-opacity="0.85" />
+    </radialGradient>
+    <clipPath id="clip-R10">
+      <polygon points="230,180 410,180 410,300 500,300 500,180 680,180 680,300 710,300 710,180 770,180 770,300 800,300 800,180 970,180 970,300 970,480 800,480 800,450 940,450 940,380 800,380 710,380 500,380 230,380 230,300" />
+    </clipPath>
+    <radialGradient id="thermalGrad-R10" cx="600.0" cy="330.0" r="399.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a3d2e5" stop-opacity="0.95" />
+      <stop offset="80%" stop-color="#94c7df" stop-opacity="0.90" />
+      <stop offset="100%" stop-color="#94c7df" stop-opacity="0.85" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="935" fill="#f8fafc" />
+  <!-- Layer 1: Thermal Temperature Fills & Spatial Gradients -->
+  <g id="layer-rooms">
+    <polygon id="room-R1" points="230,180 410,180 410,300 230,300" fill="url(#thermalGrad-R1)" clip-path="url(#clip-R1)" stroke="#475569" stroke-width="1.5">
+      <title>BEDROOM #2: 24.3°C (Simulated Range: 24.1 - 24.3°C)</title>
+    </polygon>
+    <polygon id="room-R2" points="500,180 680,180 680,300 500,300" fill="url(#thermalGrad-R2)" clip-path="url(#clip-R2)" stroke="#475569" stroke-width="1.5">
+      <title>BEDROOM #3: 24.5°C (Simulated Range: 24.2 - 24.5°C)</title>
+    </polygon>
+    <polygon id="room-R3" points="710,180 770,180 770,300 710,300" fill="url(#thermalGrad-R3)" clip-path="url(#clip-R3)" stroke="#475569" stroke-width="1.5">
+      <title>BATHROOM: 24.2°C (Simulated Range: 24.0 - 24.2°C)</title>
+    </polygon>
+    <polygon id="room-R4" points="800,180 970,180 970,300 800,300" fill="url(#thermalGrad-R4)" clip-path="url(#clip-R4)" stroke="#475569" stroke-width="1.5">
+      <title>MASTER BEDROOM: 24.5°C (Simulated Range: 24.2 - 24.5°C)</title>
+    </polygon>
+    <polygon id="room-R5" points="230,380 500,380 500,620 230,620" fill="url(#thermalGrad-R5)" clip-path="url(#clip-R5)" stroke="#475569" stroke-width="1.5">
+      <title>FAMILY ROOM: 24.8°C (Simulated Range: 24.5 - 24.8°C)</title>
+    </polygon>
+    <polygon id="room-R6" points="500,380 710,380 710,620 500,620" fill="url(#thermalGrad-R6)" clip-path="url(#clip-R6)" stroke="#475569" stroke-width="1.5">
+      <title>DINNING AREA: 25.0°C (Simulated Range: 25.0 - 25.0°C)</title>
+    </polygon>
+    <polygon id="room-R7" points="710,380 800,380 800,620 710,620" fill="url(#thermalGrad-R7)" clip-path="url(#clip-R7)" stroke="#475569" stroke-width="1.5">
+      <title>KITCHEN: 26.6°C (Simulated Range: 26.6 - 27.3°C)</title>
+    </polygon>
+    <polygon id="room-R8" points="800,380 940,380 940,450 800,450" fill="url(#thermalGrad-R8)" clip-path="url(#clip-R8)" stroke="#475569" stroke-width="1.5">
+      <title>CLOSET: 24.7°C (Simulated Range: 24.7 - 24.7°C)</title>
+    </polygon>
+    <polygon id="room-R9" points="800,480 970,480 970,620 800,620" fill="url(#thermalGrad-R9)" clip-path="url(#clip-R9)" stroke="#475569" stroke-width="1.5">
+      <title>WASHROOM: 24.7°C (Simulated Range: 24.4 - 24.7°C)</title>
+    </polygon>
+    <polygon id="room-R10" points="230,180 410,180 410,300 500,300 500,180 680,180 680,300 710,300 710,180 770,180 770,300 800,300 800,180 970,180 970,300 970,480 800,480 800,450 940,450 940,380 800,380 710,380 500,380 230,380 230,300" fill="url(#thermalGrad-R10)" clip-path="url(#clip-R10)" stroke="#475569" stroke-width="1.5">
+      <title>Corridor: 24.4°C (Simulated Range: 24.1 - 24.4°C)</title>
+    </polygon>
+  </g>
+  <!-- Layer 2: Architectural Fixtures -->
+  <g id="layer-fixtures">
+    <rect id="fix-F1_R1" x="290" y="200" width="100" height="80" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#64748b" stroke-width="1.2" >
+      <title>Bed</title>
+    </rect>
+    <rect id="fix-F2_R1" x="240" y="200" width="30" height="30" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Nightstand</title>
+    </rect>
+    <rect id="fix-F3_R1" x="370" y="200" width="30" height="30" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Nightstand</title>
+    </rect>
+    <rect id="fix-F1_R2" x="590" y="200" width="100" height="80" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#64748b" stroke-width="1.2" >
+      <title>Bed</title>
+    </rect>
+    <rect id="fix-F2_R2" x="540" y="200" width="30" height="30" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Nightstand</title>
+    </rect>
+    <rect id="fix-F3_R2" x="650" y="200" width="30" height="30" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Nightstand</title>
+    </rect>
+    <rect id="fix-F1_R3" x="710" y="180" width="60" height="120" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1.2" >
+      <title>Bathtub</title>
+    </rect>
+    <rect id="fix-F2_R3" x="720" y="230" width="40" height="40" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1.2" >
+      <title>Toilet</title>
+    </rect>
+    <rect id="fix-F3_R3" x="720" y="280" width="40" height="20" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1.2" >
+      <title>Sink</title>
+    </rect>
+    <rect id="fix-F1_R4" x="870" y="200" width="100" height="80" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#64748b" stroke-width="1.2" >
+      <title>Bed</title>
+    </rect>
+    <rect id="fix-F2_R4" x="810" y="200" width="30" height="30" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Nightstand</title>
+    </rect>
+    <rect id="fix-F3_R4" x="940" y="200" width="30" height="30" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Nightstand</title>
+    </rect>
+    <rect id="fix-F1_R5" x="240" y="390" width="60" height="150" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Sofa</title>
+    </rect>
+    <rect id="fix-F2_R5" x="350" y="560" width="50" height="50" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Armchair</title>
+    </rect>
+    <rect id="fix-F3_R5" x="420" y="560" width="50" height="50" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Armchair</title>
+    </rect>
+    <rect id="fix-F1_R7" x="740" y="450" width="30" height="80" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>Island</title>
+    </rect>
+    <rect id="fix-F2_R7" x="800" y="450" width="30" height="60" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#f97316" stroke-width="1.2" >
+      <title>Stove</title>
+    </rect>
+    <rect id="fix-F3_R7" x="740" y="590" width="40" height="20" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1.2" >
+      <title>Sink</title>
+    </rect>
+    <rect id="fix-F1_R9" x="840" y="520" width="40" height="40" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>W</title>
+    </rect>
+    <rect id="fix-F2_R9" x="890" y="520" width="40" height="40" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#94a3b8" stroke-width="1.2" >
+      <title>D</title>
+    </rect>
+    <rect id="fix-F3_R9" x="840" y="590" width="40" height="20" rx="3" fill="#ffffff" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1.2" >
+      <title>Sink</title>
+    </rect>
+  </g>
+  <!-- Layer 3: Walls and Partitions -->
+  <g id="layer-walls">
+    <line id="wall-W1_R1" x1="200" y1="150" x2="440" y2="150" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W1_R2" x1="470" y1="150" x2="700" y2="150" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W1_R3" x1="700" y1="150" x2="790" y2="150" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W1_R4" x1="790" y1="150" x2="1000" y2="150" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W2_R4" x1="1000" y1="150" x2="1000" y2="350" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W2_R9" x1="1000" y1="470" x2="1000" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W3_R5" x1="200" y1="650" x2="500" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W3_R6" x1="500" y1="650" x2="710" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W3_R7" x1="710" y1="650" x2="800" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W3_R9" x1="800" y1="650" x2="1000" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W4_R1" x1="200" y1="150" x2="200" y2="350" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W4_R5" x1="200" y1="350" x2="200" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W5_R1" x1="410" y1="180" x2="410" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W6_R1" x1="230" y1="300" x2="410" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W6_R2" x1="500" y1="300" x2="680" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W7_R2" x1="500" y1="180" x2="500" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W7_R3" x1="710" y1="180" x2="710" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W8_R2" x1="680" y1="180" x2="680" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W8_R3" x1="770" y1="180" x2="770" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W9_R3" x1="710" y1="300" x2="770" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W9_R4" x1="800" y1="300" x2="970" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W10_R4" x1="800" y1="180" x2="800" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W10_R8" x1="800" y1="380" x2="940" y2="380" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W11_R5" x1="230" y1="380" x2="500" y2="380" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W11_R6" x1="500" y1="380" x2="710" y2="380" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W12_R5" x1="500" y1="380" x2="500" y2="620" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W12_R6" x1="500" y1="620" x2="500" y2="650" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W13_R6" x1="710" y1="380" x2="710" y2="620" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W13_R7" x1="710" y1="620" x2="710" y2="650" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W14_R7" x1="710" y1="380" x2="800" y2="380" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W14_R8" x1="940" y1="380" x2="940" y2="450" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W15_R7" x1="800" y1="380" x2="800" y2="450" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W15_R8" x1="800" y1="450" x2="940" y2="450" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W15_R9" x1="800" y1="480" x2="970" y2="480" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W16_R8" x1="800" y1="450" x2="800" y2="480" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W16_R9" x1="800" y1="480" x2="800" y2="620" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+  </g>
+  <!-- Layer 4: Openings (Doors and Windows) -->
+  <g id="layer-openings">
+    <g id="opening-O1" transform="translate(410, 250)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O1</title>
+    </g>
+    <g id="opening-O2" transform="translate(500, 250)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O2</title>
+    </g>
+    <g id="opening-O3" transform="translate(710, 250)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O3</title>
+    </g>
+    <g id="opening-O4" transform="translate(800, 250)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O4</title>
+    </g>
+    <g id="opening-O5" transform="translate(800, 415)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O5</title>
+    </g>
+    <g id="opening-O6" transform="translate(800, 550)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O6</title>
+    </g>
+    <g id="opening-O7" transform="translate(500, 500)">
+      <line x1="-120" y1="0" x2="120" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="-120" cy="0" r="2" fill="#d97706" />
+      <title>Door O7</title>
+    </g>
+    <g id="opening-O8" transform="translate(710, 500)">
+      <line x1="-120" y1="0" x2="120" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="-120" cy="0" r="2" fill="#d97706" />
+      <title>Door O8</title>
+    </g>
+  </g>
+  <!-- Layer 5: Physical Heat Flux Vectors & Solar Indicators -->
+  <g id="layer-heat-vectors">
+
+  </g>
+  <!-- Layer 6: Room Labels and Temperature Readouts -->
+  <g id="layer-labels">
+    <g class="room-label" transform="translate(320.0, 240.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">BEDROOM #2</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.3°C</text>
+    </g>
+    <g class="room-label" transform="translate(590.0, 240.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">BEDROOM #3</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.5°C</text>
+    </g>
+    <g class="room-label" transform="translate(740.0, 240.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">BATHROOM</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.2°C</text>
+    </g>
+    <g class="room-label" transform="translate(885.0, 240.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">MASTER BEDROOM</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.5°C</text>
+    </g>
+    <g class="room-label" transform="translate(365.0, 500.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">FAMILY ROOM</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.8°C</text>
+    </g>
+    <g class="room-label" transform="translate(605.0, 500.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">DINNING AREA</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">25.0°C</text>
+    </g>
+    <g class="room-label" transform="translate(755.0, 500.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">KITCHEN</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">26.6°C</text>
+    </g>
+    <g class="room-label" transform="translate(870.0, 415.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">CLOSET</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.7°C</text>
+    </g>
+    <g class="room-label" transform="translate(885.0, 550.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">WASHROOM</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.7°C</text>
+    </g>
+    <g class="room-label" transform="translate(600.0, 400.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.88" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.06))" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">CORRIDOR</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.4°C</text>
+    </g>
+  </g>
+
+  <!-- Metadata and Scientific Temperature Color Legend -->
+  <g id="thermal-legend" transform="translate(0, 0)">
+    <rect x="0" y="815" width="1200" height="135" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    <!-- Header and Timestamp -->
+    <text x="40" y="839" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#0f172a">BUILDING THERMAL SIMULATION</text>
+    <text x="40" y="857" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10.5" fill="#64748b">Timestamp: <tspan font-weight="600" fill="#1e293b">2026-10-12T07:00</tspan> | Outdoor: <tspan font-weight="600" fill="#1e293b">22.6°C</tspan> | Room Mean: <tspan font-weight="600" fill="#1e293b">24.8°C</tspan> (Min: 24.2°C, Max: 26.6°C)</text>
+    <!-- Colorbar Gradient -->
+    <defs>
+      <linearGradient id="tempGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#313695" />
+    <stop offset="0%" stop-color="#4575b4" />
+    <stop offset="0%" stop-color="#74add1" />
+    <stop offset="14%" stop-color="#abd9e9" />
+    <stop offset="29%" stop-color="#e0f3f8" />
+    <stop offset="43%" stop-color="#fee090" />
+    <stop offset="64%" stop-color="#fdae61" />
+    <stop offset="93%" stop-color="#f46d43" />
+    <stop offset="100%" stop-color="#d73027" />
+    <stop offset="100%" stop-color="#a50026" />
+      </linearGradient>
+    </defs>
+    <rect x="40" y="873" width="340" height="14" rx="3" fill="url(#tempGradient)" stroke="#94a3b8" stroke-width="1" />
+    <!-- Legend Scale Tick Marks -->
+    <text x="40" y="901" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" fill="#475569" text-anchor="middle">23.5°C</text>
+    <text x="210" y="901" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" fill="#475569" text-anchor="middle">27.0°C</text>
+    <text x="380" y="901" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" fill="#475569" text-anchor="middle">30.5°C</text>
+    <!-- Physical Indicator Legend -->
+    <g transform="translate(415, 871)">
+      <line x1="0" y1="9" x2="18" y2="9" stroke="#ea580c" stroke-width="2" marker-end="url(#heatArrowIn)" />
+      <text x="24" y="12" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9" fill="#475569">Heat Flux (W)</text>
+      <circle cx="95" cy="9" r="6" fill="#fbbf24" stroke="#d97706" stroke-width="1" />
+      <text x="106" y="12" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9" fill="#475569">Solar Gain</text>
+      <rect x="170" y="2" width="14" height="14" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
+      <text x="190" y="12" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9" fill="#64748b">No Data</text>
+    </g>
+    <!-- Physical Limitation Disclaimer -->
+    <text x="1160" y="857" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="end">Deterministic transient room-heat model (Not CFD / Not accredited ASHRAE 140 validation)</text>
+  </g>
+</svg>

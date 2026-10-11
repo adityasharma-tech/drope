@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint '*.ts' --quiet --fix",
     "compile": "tsc",
-    "test": "ts-node tests/unit/test-environmental-collector.test.ts"
+    "test": "ts-node tests/unit/test-environmental-collector.test.ts && ts-node tests/unit/test-thermal-simulation.test.ts && ts-node tests/unit/test-svg-renderer.test.ts"
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.1149.0",

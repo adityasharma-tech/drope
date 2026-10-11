@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 930" width="1200" height="930">
+  <desc>Thermal Simulation Vector Visualization for FLOOR PLAN</desc>
+  <rect width="1200" height="930" fill="#f8fafc" />
+  <!-- Layer 1: Room Thermal Temperature Fills -->
+  <g id="layer-rooms">
+    <polygon id="room-R1" points="230,180 410,180 410,300 230,300" fill="#98cae1" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>BEDROOM #2: 24.1°C</title>
+    </polygon>
+    <polygon id="room-R2" points="500,180 680,180 680,300 500,300" fill="#97c9e0" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>BEDROOM #3: 24.1°C</title>
+    </polygon>
+    <polygon id="room-R3" points="710,180 770,180 770,300 710,300" fill="#95c7df" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>BATHROOM: 24.1°C</title>
+    </polygon>
+    <polygon id="room-R4" points="800,180 970,180 970,300 800,300" fill="#97c9e0" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>MASTER BEDROOM: 24.1°C</title>
+    </polygon>
+    <polygon id="room-R5" points="230,380 500,380 500,620 230,620" fill="#97c9e0" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>FAMILY ROOM: 24.1°C</title>
+    </polygon>
+    <polygon id="room-R6" points="500,380 710,380 710,620 500,620" fill="#97c9e0" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>DINNING AREA: 24.1°C</title>
+    </polygon>
+    <polygon id="room-R7" points="710,380 800,380 800,620 710,620" fill="#a8d6e8" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>KITCHEN: 24.4°C</title>
+    </polygon>
+    <polygon id="room-R8" points="800,380 940,380 940,450 800,450" fill="#93c6de" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>CLOSET: 24.1°C</title>
+    </polygon>
+    <polygon id="room-R9" points="800,480 970,480 970,620 800,620" fill="#99cae1" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>WASHROOM: 24.2°C</title>
+    </polygon>
+    <polygon id="room-R10" points="230,180 410,180 410,300 500,300 500,180 680,180 680,300 710,300 710,180 770,180 770,300 800,300 800,180 970,180 970,300 970,480 800,480 800,450 940,450 940,380 800,380 710,380 500,380 230,380 230,300" fill="#95c7df" fill-opacity="0.88" stroke="#475569" stroke-width="1.5">
+      <title>Corridor: 24.1°C</title>
+    </polygon>
+  </g>
+  <!-- Layer 2: Walls and Partitions -->
+  <g id="layer-walls">
+    <line id="wall-W1_R1" x1="200" y1="150" x2="440" y2="150" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W1_R2" x1="470" y1="150" x2="700" y2="150" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W1_R3" x1="700" y1="150" x2="790" y2="150" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W1_R4" x1="790" y1="150" x2="1000" y2="150" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W2_R4" x1="1000" y1="150" x2="1000" y2="350" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W2_R9" x1="1000" y1="470" x2="1000" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W3_R5" x1="200" y1="650" x2="500" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W3_R6" x1="500" y1="650" x2="710" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W3_R7" x1="710" y1="650" x2="800" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W3_R9" x1="800" y1="650" x2="1000" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W4_R1" x1="200" y1="150" x2="200" y2="350" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W4_R5" x1="200" y1="350" x2="200" y2="650" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+    <line id="wall-W5_R1" x1="410" y1="180" x2="410" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W6_R1" x1="230" y1="300" x2="410" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W6_R2" x1="500" y1="300" x2="680" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W7_R2" x1="500" y1="180" x2="500" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W7_R3" x1="710" y1="180" x2="710" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W8_R2" x1="680" y1="180" x2="680" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W8_R3" x1="770" y1="180" x2="770" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W9_R3" x1="710" y1="300" x2="770" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W9_R4" x1="800" y1="300" x2="970" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W10_R4" x1="800" y1="180" x2="800" y2="300" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W10_R8" x1="800" y1="380" x2="940" y2="380" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W11_R5" x1="230" y1="380" x2="500" y2="380" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W11_R6" x1="500" y1="380" x2="710" y2="380" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W12_R5" x1="500" y1="380" x2="500" y2="620" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W12_R6" x1="500" y1="620" x2="500" y2="650" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W13_R6" x1="710" y1="380" x2="710" y2="620" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W13_R7" x1="710" y1="620" x2="710" y2="650" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W14_R7" x1="710" y1="380" x2="800" y2="380" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W14_R8" x1="940" y1="380" x2="940" y2="450" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W15_R7" x1="800" y1="380" x2="800" y2="450" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W15_R8" x1="800" y1="450" x2="940" y2="450" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W15_R9" x1="800" y1="480" x2="970" y2="480" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W16_R8" x1="800" y1="450" x2="800" y2="480" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <line id="wall-W16_R9" x1="800" y1="480" x2="800" y2="620" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+  </g>
+  <!-- Layer 3: Openings (Doors and Windows) -->
+  <g id="layer-openings">
+    <g id="opening-O1" transform="translate(410, 250)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O1</title>
+    </g>
+    <g id="opening-O2" transform="translate(500, 250)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O2</title>
+    </g>
+    <g id="opening-O3" transform="translate(710, 250)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O3</title>
+    </g>
+    <g id="opening-O4" transform="translate(800, 250)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O4</title>
+    </g>
+    <g id="opening-O5" transform="translate(800, 415)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O5</title>
+    </g>
+    <g id="opening-O6" transform="translate(800, 550)">
+      <line x1="0" y1="-30" x2="30" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="0" cy="-30" r="2" fill="#d97706" />
+      <title>Door O6</title>
+    </g>
+    <g id="opening-O7" transform="translate(500, 500)">
+      <line x1="-120" y1="0" x2="120" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="-120" cy="0" r="2" fill="#d97706" />
+      <title>Door O7</title>
+    </g>
+    <g id="opening-O8" transform="translate(710, 500)">
+      <line x1="-120" y1="0" x2="120" y2="0" stroke="#d97706" stroke-width="2.5" />
+      <circle cx="-120" cy="0" r="2" fill="#d97706" />
+      <title>Door O8</title>
+    </g>
+  </g>
+  <!-- Layer 4: Room Labels and Temperature Readouts -->
+  <g id="layer-labels">
+    <g class="room-label" transform="translate(320.0, 240.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">BEDROOM #2</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.1°C</text>
+    </g>
+    <g class="room-label" transform="translate(590.0, 240.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">BEDROOM #3</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.1°C</text>
+    </g>
+    <g class="room-label" transform="translate(740.0, 240.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">BATHROOM</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.1°C</text>
+    </g>
+    <g class="room-label" transform="translate(885.0, 240.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">MASTER BEDROOM</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.1°C</text>
+    </g>
+    <g class="room-label" transform="translate(365.0, 500.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">FAMILY ROOM</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.1°C</text>
+    </g>
+    <g class="room-label" transform="translate(605.0, 500.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">DINNING AREA</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.1°C</text>
+    </g>
+    <g class="room-label" transform="translate(755.0, 500.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">KITCHEN</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.4°C</text>
+    </g>
+    <g class="room-label" transform="translate(870.0, 415.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">CLOSET</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.1°C</text>
+    </g>
+    <g class="room-label" transform="translate(885.0, 550.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">WASHROOM</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.2°C</text>
+    </g>
+    <g class="room-label" transform="translate(600.0, 400.0)" text-anchor="middle" pointer-events="none">
+      <rect x="-48" y="-18" width="96" height="34" rx="4" fill="#ffffff" fill-opacity="0.82" />
+      <text y="-2" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">CORRIDOR</text>
+      <text y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e293b">24.1°C</text>
+    </g>
+  </g>
+
+  <!-- Metadata and Temperature Color Legend -->
+  <g id="thermal-legend" transform="translate(0, 0)">
+    <rect x="0" y="815" width="1200" height="130" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    <!-- Header and Timestamp -->
+    <text x="40" y="840" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#0f172a">SIMULATED THERMAL PROFILE</text>
+    <text x="40" y="857" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Time: <tspan font-weight="600" fill="#1e293b">2026-10-11T18:00</tspan> | Outdoor Temp: <tspan font-weight="600" fill="#1e293b">25.1°C</tspan> | Prototype Thermal Model (Not CFD)</text>
+    <!-- Linear Gradient Bar -->
+    <defs>
+      <linearGradient id="tempGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#313695" />
+    <stop offset="0%" stop-color="#4575b4" />
+    <stop offset="0%" stop-color="#74add1" />
+    <stop offset="15%" stop-color="#abd9e9" />
+    <stop offset="31%" stop-color="#e0f3f8" />
+    <stop offset="46%" stop-color="#fee090" />
+    <stop offset="69%" stop-color="#fdae61" />
+    <stop offset="100%" stop-color="#f46d43" />
+    <stop offset="100%" stop-color="#d73027" />
+    <stop offset="100%" stop-color="#a50026" />
+      </linearGradient>
+    </defs>
+    <rect x="40" y="870" width="320" height="14" rx="3" fill="url(#tempGradient)" stroke="#94a3b8" stroke-width="1" />
+    <!-- Legend Tick Marks -->
+    <text x="40" y="898" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" fill="#475569" text-anchor="middle">23.5°C</text>
+    <text x="200" y="898" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" fill="#475569" text-anchor="middle">26.8°C</text>
+    <text x="360" y="898" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" fill="#475569" text-anchor="middle">30.0°C</text>
+    <!-- Missing data indicator -->
+    <g transform="translate(400, 870)">
+      <rect x="0" y="0" width="20" height="14" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
+      <text x="28" y="11" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10" fill="#64748b">No Data</text>
+    </g>
+  </g>
+</svg>

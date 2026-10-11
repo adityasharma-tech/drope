@@ -1,0 +1,4982 @@
+{
+  "simulationId": "sim_1791725348095_wp789k",
+  "status": "COMPLETED",
+  "modelMetadata": {
+    "modelName": "Room-Level Lumped-Capacitance Transient Heat Balance",
+    "version": "1.0.0",
+    "numericalMethod": "Explicit Euler with 60s numerical sub-stepping",
+    "subTimestepSeconds": 60,
+    "description": "Computes dynamic room temperature trajectories from envelope conduction, partition coupling, glazing solar gains, natural ventilation, and internal gains."
+  },
+  "simulationPeriod": {
+    "startTimestamp": "2026-10-11T18:00",
+    "endTimestamp": "2026-10-12T17:00",
+    "totalHours": 24
+  },
+  "environmentalProvenance": {
+    "locationName": "Sample Site",
+    "latitude": 28.576448,
+    "longitude": 77.18678,
+    "elevationM": 214,
+    "timezone": "Asia/Kolkata",
+    "provider": "Open-Meteo"
+  },
+  "buildingAssumptions": {
+    "exteriorWallUValue": 0.6,
+    "interiorPartitionUValue": 1.8,
+    "windowUValue": 2.8,
+    "windowSHGC": 0.65,
+    "roofUValue": 0.4,
+    "groundSlabUValue": 0.5,
+    "ceilingHeightM": 2.7,
+    "effectiveThermalCapacitancePerM2": 120000,
+    "airChangesPerHour": 0.5,
+    "airDensityKgM3": 1.2,
+    "airSpecificHeatJPkgK": 1005,
+    "defaultInitialTempC": 24,
+    "internalGainsByRoomTypeWPerM2": {
+      "kitchen": 15,
+      "living": 6,
+      "family-room": 6,
+      "dining": 5,
+      "bedroom": 3.5,
+      "master-bedroom": 3.5,
+      "study": 8,
+      "bathroom": 2,
+      "washroom": 2,
+      "toilet": 1,
+      "corridor": 1,
+      "lobby": 1.5,
+      "foyer": 1.5,
+      "hallway": 1,
+      "closet": 0.5,
+      "storage": 0.5,
+      "garage": 0.5,
+      "default": 4
+    }
+  },
+  "roomGeometries": {
+    "R1": {
+      "roomId": "R1",
+      "roomLabel": "BEDROOM #2",
+      "roomType": "Bedroom",
+      "floorAreaM2": 10.03,
+      "volumeM3": 27.09,
+      "thermalCapacitanceJK": 1204023,
+      "exteriorWallAreaM2": 18.11,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R10": 9.88
+      },
+      "roofAreaM2": 10.03,
+      "baseInternalGainsW": 35.1
+    },
+    "R2": {
+      "roomId": "R2",
+      "roomLabel": "BEDROOM #3",
+      "roomType": "Bedroom",
+      "floorAreaM2": 10.03,
+      "volumeM3": 27.09,
+      "thermalCapacitanceJK": 1204023,
+      "exteriorWallAreaM2": 9.46,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R10": 17.28
+      },
+      "roofAreaM2": 10.03,
+      "baseInternalGainsW": 35.1
+    },
+    "R3": {
+      "roomId": "R3",
+      "roomLabel": "BATHROOM",
+      "roomType": "Bathroom",
+      "floorAreaM2": 2.01,
+      "volumeM3": 5.42,
+      "thermalCapacitanceJK": 240805,
+      "exteriorWallAreaM2": 3.7,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R10": 12.34
+      },
+      "roofAreaM2": 2.01,
+      "baseInternalGainsW": 4
+    },
+    "R4": {
+      "roomId": "R4",
+      "roomLabel": "MASTER BEDROOM",
+      "roomType": "Bedroom",
+      "floorAreaM2": 14.12,
+      "volumeM3": 38.14,
+      "thermalCapacitanceJK": 1694997,
+      "exteriorWallAreaM2": 16.87,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R10": 11.93
+      },
+      "roofAreaM2": 14.12,
+      "baseInternalGainsW": 49.4
+    },
+    "R5": {
+      "roomId": "R5",
+      "roomLabel": "FAMILY ROOM",
+      "roomType": "Living Room",
+      "floorAreaM2": 22.76,
+      "volumeM3": 61.44,
+      "thermalCapacitanceJK": 2730791,
+      "exteriorWallAreaM2": 12.34,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R10": 16.66,
+        "R6": 5.55
+      },
+      "roofAreaM2": 22.76,
+      "baseInternalGainsW": 91
+    },
+    "R6": {
+      "roomId": "R6",
+      "roomLabel": "DINNING AREA",
+      "roomType": "Dining Room",
+      "floorAreaM2": 13.65,
+      "volumeM3": 36.87,
+      "thermalCapacitanceJK": 1638474,
+      "exteriorWallAreaM2": 0,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R10": 19.75,
+        "R5": 5.55,
+        "R7": 5.55
+      },
+      "roofAreaM2": 13.65,
+      "baseInternalGainsW": 54.6
+    },
+    "R7": {
+      "roomId": "R7",
+      "roomLabel": "KITCHEN",
+      "roomType": "Kitchen",
+      "floorAreaM2": 12.9,
+      "volumeM3": 34.82,
+      "thermalCapacitanceJK": 1547448,
+      "exteriorWallAreaM2": 0,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R6": 5.55,
+        "R10": 13.58,
+        "R8": 5.49,
+        "R9": 6.93
+      },
+      "roofAreaM2": 12.9,
+      "baseInternalGainsW": 193.4
+    },
+    "R8": {
+      "roomId": "R8",
+      "roomLabel": "CLOSET",
+      "roomType": "Closet",
+      "floorAreaM2": 3.9,
+      "volumeM3": 10.54,
+      "thermalCapacitanceJK": 468231,
+      "exteriorWallAreaM2": 0,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R10": 13.58,
+        "R9": 7.55,
+        "R7": 5.49
+      },
+      "roofAreaM2": 3.9,
+      "baseInternalGainsW": 2
+    },
+    "R9": {
+      "roomId": "R9",
+      "roomLabel": "WASHROOM",
+      "roomType": "Laundry Room",
+      "floorAreaM2": 6.63,
+      "volumeM3": 17.91,
+      "thermalCapacitanceJK": 795993,
+      "exteriorWallAreaM2": 15.64,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R10": 13.37,
+        "R7": 6.93,
+        "R8": 7.55
+      },
+      "roofAreaM2": 6.63,
+      "baseInternalGainsW": 26.5
+    },
+    "R10": {
+      "roomId": "R10",
+      "roomLabel": "Corridor",
+      "roomType": "Corridor",
+      "floorAreaM2": 23.53,
+      "volumeM3": 63.54,
+      "thermalCapacitanceJK": 2823880,
+      "exteriorWallAreaM2": 76.12,
+      "exteriorWindowAreaM2": 0,
+      "windowOrientations": [],
+      "partitionAreasToAdjacentRooms": {
+        "R1": 9.88,
+        "R2": 17.28,
+        "R3": 12.34,
+        "R4": 11.93,
+        "R5": 16.66,
+        "R6": 19.75,
+        "R7": 13.58,
+        "R8": 13.58,
+        "R9": 13.37
+      },
+      "roofAreaM2": 23.53,
+      "baseInternalGainsW": 23.5
+    }
+  },
+  "initialRoomTemperatures": {
+    "R1": 24,
+    "R2": 24,
+    "R3": 24,
+    "R4": 24,
+    "R5": 24,
+    "R6": 24,
+    "R7": 24,
+    "R8": 24,
+    "R9": 24,
+    "R10": 24
+  },
+  "hourlyRoomStates": {
+    "2026-10-11T18:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.15,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -0.95,
+        "heatFlows": {
+          "exteriorWallConductionW": 3.9,
+          "windowConductionW": 0,
+          "roofConductionW": 1.4,
+          "internalPartitionTransferW": -0.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 1.6,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 41.3
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.13,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -0.97,
+        "heatFlows": {
+          "exteriorWallConductionW": 2.1,
+          "windowConductionW": 0,
+          "roofConductionW": 1.5,
+          "internalPartitionTransferW": -1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 1.7,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 39.4
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.1,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -1,
+        "heatFlows": {
+          "exteriorWallConductionW": 0.9,
+          "windowConductionW": 0,
+          "roofConductionW": 0.3,
+          "internalPartitionTransferW": 0,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 0.4,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 5.5
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.14,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -0.96,
+        "heatFlows": {
+          "exteriorWallConductionW": 3.7,
+          "windowConductionW": 0,
+          "roofConductionW": 2.1,
+          "internalPartitionTransferW": -0.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 2.4,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 56.8
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.14,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -0.96,
+        "heatFlows": {
+          "exteriorWallConductionW": 2.7,
+          "windowConductionW": 0,
+          "roofConductionW": 3.3,
+          "internalPartitionTransferW": -1.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 3.7,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 99.4
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.14,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -0.96,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 2,
+          "internalPartitionTransferW": 1.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 2.3,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 60.5
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.44,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -0.66,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 0.4,
+          "internalPartitionTransferW": -18.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 0.4,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 175.9
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.06,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -1.04,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 0.7,
+          "internalPartitionTransferW": 6.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 0.8,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 9.6
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.17,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -0.93,
+        "heatFlows": {
+          "exteriorWallConductionW": 3.2,
+          "windowConductionW": 0,
+          "roofConductionW": 0.9,
+          "internalPartitionTransferW": 0.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 1,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 31.9
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-11T18:00",
+        "temperatureC": 24.1,
+        "outdoorTempC": 25.1,
+        "temperatureDeltaC": -1,
+        "heatFlows": {
+          "exteriorWallConductionW": 18.5,
+          "windowConductionW": 0,
+          "roofConductionW": 3.8,
+          "internalPartitionTransferW": 14.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 4.3,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 64.2
+        }
+      }
+    ],
+    "2026-10-11T19:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.25,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": -0.25,
+        "heatFlows": {
+          "exteriorWallConductionW": -1.6,
+          "windowConductionW": 0,
+          "roofConductionW": -0.6,
+          "internalPartitionTransferW": -1.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.7,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 30.8
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.24,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": -0.26,
+        "heatFlows": {
+          "exteriorWallConductionW": -0.8,
+          "windowConductionW": 0,
+          "roofConductionW": -0.5,
+          "internalPartitionTransferW": -2.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.6,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 31.1
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.17,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": -0.33,
+        "heatFlows": {
+          "exteriorWallConductionW": -0.2,
+          "windowConductionW": 0,
+          "roofConductionW": -0.1,
+          "internalPartitionTransferW": 0,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.1,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 3.7
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.25,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": -0.25,
+        "heatFlows": {
+          "exteriorWallConductionW": -1.4,
+          "windowConductionW": 0,
+          "roofConductionW": -0.8,
+          "internalPartitionTransferW": -1.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.9,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 44.7
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.27,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": -0.23,
+        "heatFlows": {
+          "exteriorWallConductionW": -1.2,
+          "windowConductionW": 0,
+          "roofConductionW": -1.5,
+          "internalPartitionTransferW": -2.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.6,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 84
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.27,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": -0.23,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -0.9,
+          "internalPartitionTransferW": 2.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 54.9
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.82,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": 0.32,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -3.7,
+          "internalPartitionTransferW": -34.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4.2,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 151.1
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.14,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": -0.36,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -0.1,
+          "internalPartitionTransferW": 9.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.1,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 11.4
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.3,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": -0.2,
+        "heatFlows": {
+          "exteriorWallConductionW": -1.8,
+          "windowConductionW": 0,
+          "roofConductionW": -0.5,
+          "internalPartitionTransferW": 1.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.6,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 25.1
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-11T19:00",
+        "temperatureC": 24.17,
+        "outdoorTempC": 24.5,
+        "temperatureDeltaC": -0.33,
+        "heatFlows": {
+          "exteriorWallConductionW": -3.1,
+          "windowConductionW": 0,
+          "roofConductionW": -0.6,
+          "internalPartitionTransferW": 29.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.7,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 48.1
+        }
+      }
+    ],
+    "2026-10-11T20:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 24.33,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 0.23,
+        "heatFlows": {
+          "exteriorWallConductionW": -6.8,
+          "windowConductionW": 0,
+          "roofConductionW": -2.5,
+          "internalPartitionTransferW": -1.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2.8,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 21.1
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 24.32,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 0.22,
+        "heatFlows": {
+          "exteriorWallConductionW": -3.5,
+          "windowConductionW": 0,
+          "roofConductionW": -2.5,
+          "internalPartitionTransferW": -3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2.8,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 23.3
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 24.22,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 0.12,
+        "heatFlows": {
+          "exteriorWallConductionW": -1.1,
+          "windowConductionW": 0,
+          "roofConductionW": -0.4,
+          "internalPartitionTransferW": 0.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.5,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 2.2
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 24.33,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 0.23,
+        "heatFlows": {
+          "exteriorWallConductionW": -6.3,
+          "windowConductionW": 0,
+          "roofConductionW": -3.5,
+          "internalPartitionTransferW": -2.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 33.3
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 24.37,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 0.27,
+        "heatFlows": {
+          "exteriorWallConductionW": -4.9,
+          "windowConductionW": 0,
+          "roofConductionW": -6,
+          "internalPartitionTransferW": -4.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -6.8,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 69.2
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 24.38,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 0.28,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -3.7,
+          "internalPartitionTransferW": 1.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4.2,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 48.7
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 25.15,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 1.05,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -7.4,
+          "internalPartitionTransferW": -48.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -8.4,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 129.2
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 24.23,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 0.13,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -0.8,
+          "internalPartitionTransferW": 11.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.9,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 11.3
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 24.4,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 0.3,
+        "heatFlows": {
+          "exteriorWallConductionW": -6.5,
+          "windowConductionW": 0,
+          "roofConductionW": -1.8,
+          "internalPartitionTransferW": 3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2.1,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 19.1
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-11T20:00",
+        "temperatureC": 24.22,
+        "outdoorTempC": 24.1,
+        "temperatureDeltaC": 0.12,
+        "heatFlows": {
+          "exteriorWallConductionW": -23.7,
+          "windowConductionW": 0,
+          "roofConductionW": -4.9,
+          "internalPartitionTransferW": 43.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -5.5,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 32.8
+        }
+      }
+    ],
+    "2026-10-11T21:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 24.38,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 0.68,
+        "heatFlows": {
+          "exteriorWallConductionW": -10.6,
+          "windowConductionW": 0,
+          "roofConductionW": -3.9,
+          "internalPartitionTransferW": -2.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4.4,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 13.9
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 24.38,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 0.68,
+        "heatFlows": {
+          "exteriorWallConductionW": -5.6,
+          "windowConductionW": 0,
+          "roofConductionW": -3.9,
+          "internalPartitionTransferW": -3.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4.4,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 17.4
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 24.24,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 0.54,
+        "heatFlows": {
+          "exteriorWallConductionW": -1.9,
+          "windowConductionW": 0,
+          "roofConductionW": -0.7,
+          "internalPartitionTransferW": 0.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.8,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 1.1
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 24.39,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 0.69,
+        "heatFlows": {
+          "exteriorWallConductionW": -10,
+          "windowConductionW": 0,
+          "roofConductionW": -5.6,
+          "internalPartitionTransferW": -2.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -6.3,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 24.8
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 24.45,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 0.75,
+        "heatFlows": {
+          "exteriorWallConductionW": -7.7,
+          "windowConductionW": 0,
+          "roofConductionW": -9.5,
+          "internalPartitionTransferW": -5.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -10.8,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 57.6
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 24.48,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 0.78,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -5.9,
+          "internalPartitionTransferW": 1.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -6.7,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 43.3
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 25.43,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 1.73,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -10.4,
+          "internalPartitionTransferW": -60.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -11.8,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 110.6
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 24.32,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 0.62,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -1.4,
+          "internalPartitionTransferW": 11.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.6,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 10.7
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 24.47,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 0.77,
+        "heatFlows": {
+          "exteriorWallConductionW": -10,
+          "windowConductionW": 0,
+          "roofConductionW": -2.8,
+          "internalPartitionTransferW": 4.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -3.2,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 15
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-11T21:00",
+        "temperatureC": 24.26,
+        "outdoorTempC": 23.7,
+        "temperatureDeltaC": 0.56,
+        "heatFlows": {
+          "exteriorWallConductionW": -39.1,
+          "windowConductionW": 0,
+          "roofConductionW": -8.1,
+          "internalPartitionTransferW": 56.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -9.1,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 23.8
+        }
+      }
+    ],
+    "2026-10-11T22:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 24.42,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 1.02,
+        "heatFlows": {
+          "exteriorWallConductionW": -12.1,
+          "windowConductionW": 0,
+          "roofConductionW": -4.5,
+          "internalPartitionTransferW": -2.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -5.1,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 11.1
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 24.43,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 1.03,
+        "heatFlows": {
+          "exteriorWallConductionW": -6.4,
+          "windowConductionW": 0,
+          "roofConductionW": -4.5,
+          "internalPartitionTransferW": -4.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -5.1,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 14.8
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 24.26,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 0.86,
+        "heatFlows": {
+          "exteriorWallConductionW": -2.1,
+          "windowConductionW": 0,
+          "roofConductionW": -0.8,
+          "internalPartitionTransferW": 0.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.9,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 1
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 24.44,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 1.04,
+        "heatFlows": {
+          "exteriorWallConductionW": -11.5,
+          "windowConductionW": 0,
+          "roofConductionW": -6.4,
+          "internalPartitionTransferW": -3.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -7.3,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 21.1
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 24.52,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 1.12,
+        "heatFlows": {
+          "exteriorWallConductionW": -9,
+          "windowConductionW": 0,
+          "roofConductionW": -11.1,
+          "internalPartitionTransferW": -6.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -12.6,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 52
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 24.57,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 1.17,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -6.9,
+          "internalPartitionTransferW": 0.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -7.9,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 40.2
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 25.67,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 2.27,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -12.2,
+          "internalPartitionTransferW": -70.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -13.8,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 96.5
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 24.4,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 1,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -1.7,
+          "internalPartitionTransferW": 11.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.9,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 10.3
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 24.54,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 1.14,
+        "heatFlows": {
+          "exteriorWallConductionW": -11.6,
+          "windowConductionW": 0,
+          "roofConductionW": -3.3,
+          "internalPartitionTransferW": 6.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -3.7,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 14.1
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-11T22:00",
+        "temperatureC": 24.29,
+        "outdoorTempC": 23.4,
+        "temperatureDeltaC": 0.89,
+        "heatFlows": {
+          "exteriorWallConductionW": -45.2,
+          "windowConductionW": 0,
+          "roofConductionW": -9.3,
+          "internalPartitionTransferW": 67.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -10.5,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 26.1
+        }
+      }
+    ],
+    "2026-10-11T23:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 24.45,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 1.15,
+        "heatFlows": {
+          "exteriorWallConductionW": -13.6,
+          "windowConductionW": 0,
+          "roofConductionW": -5,
+          "internalPartitionTransferW": -2.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -5.7,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 8.7
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 24.47,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 1.17,
+        "heatFlows": {
+          "exteriorWallConductionW": -7.2,
+          "windowConductionW": 0,
+          "roofConductionW": -5.1,
+          "internalPartitionTransferW": -4.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -5.8,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 12.6
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 24.27,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 0.97,
+        "heatFlows": {
+          "exteriorWallConductionW": -2.4,
+          "windowConductionW": 0,
+          "roofConductionW": -0.9,
+          "internalPartitionTransferW": 1.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 1
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 24.48,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 1.18,
+        "heatFlows": {
+          "exteriorWallConductionW": -12.9,
+          "windowConductionW": 0,
+          "roofConductionW": -7.2,
+          "internalPartitionTransferW": -3.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -8.2,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 17.8
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 24.59,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 1.29,
+        "heatFlows": {
+          "exteriorWallConductionW": -10.3,
+          "windowConductionW": 0,
+          "roofConductionW": -12.6,
+          "internalPartitionTransferW": -7.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -14.3,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 46.8
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 24.66,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 1.36,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -8,
+          "internalPartitionTransferW": -0.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -9,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 37.3
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 25.88,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 2.58,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -13.8,
+          "internalPartitionTransferW": -79.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -15.6,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 84.4
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 24.47,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 1.17,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -2,
+          "internalPartitionTransferW": 11.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2.2,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 9.7
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 24.6,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 1.3,
+        "heatFlows": {
+          "exteriorWallConductionW": -13.1,
+          "windowConductionW": 0,
+          "roofConductionW": -3.7,
+          "internalPartitionTransferW": 7.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4.2,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 13
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-11T23:00",
+        "temperatureC": 24.33,
+        "outdoorTempC": 23.3,
+        "temperatureDeltaC": 1.03,
+        "heatFlows": {
+          "exteriorWallConductionW": -51.3,
+          "windowConductionW": 0,
+          "roofConductionW": -10.6,
+          "internalPartitionTransferW": 76.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -12,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 26.1
+        }
+      }
+    ],
+    "2026-10-12T00:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 24.47,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 1.27,
+        "heatFlows": {
+          "exteriorWallConductionW": -14.9,
+          "windowConductionW": 0,
+          "roofConductionW": -5.5,
+          "internalPartitionTransferW": -2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -6.2,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 6.5
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 24.5,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 1.3,
+        "heatFlows": {
+          "exteriorWallConductionW": -8,
+          "windowConductionW": 0,
+          "roofConductionW": -5.6,
+          "internalPartitionTransferW": -4.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -6.4,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 10.6
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 24.29,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 1.09,
+        "heatFlows": {
+          "exteriorWallConductionW": -2.6,
+          "windowConductionW": 0,
+          "roofConductionW": -1,
+          "internalPartitionTransferW": 1.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.1,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 0.9
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 24.51,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 1.31,
+        "heatFlows": {
+          "exteriorWallConductionW": -14.3,
+          "windowConductionW": 0,
+          "roofConductionW": -8,
+          "internalPartitionTransferW": -3.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -9,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 14.7
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 24.65,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 1.45,
+        "heatFlows": {
+          "exteriorWallConductionW": -11.4,
+          "windowConductionW": 0,
+          "roofConductionW": -14,
+          "internalPartitionTransferW": -7.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -15.9,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 42
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 24.74,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 1.54,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -8.9,
+          "internalPartitionTransferW": -1.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -10.1,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 34.4
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 26.06,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 2.86,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -15.2,
+          "internalPartitionTransferW": -87.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -17.2,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 73.8
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 24.55,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 1.35,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -2.3,
+          "internalPartitionTransferW": 11.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2.5,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 9.1
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 24.66,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 1.46,
+        "heatFlows": {
+          "exteriorWallConductionW": -14.6,
+          "windowConductionW": 0,
+          "roofConductionW": -4.1,
+          "internalPartitionTransferW": 8.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4.7,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 11.9
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T00:00",
+        "temperatureC": 24.36,
+        "outdoorTempC": 23.2,
+        "temperatureDeltaC": 1.16,
+        "heatFlows": {
+          "exteriorWallConductionW": -57.4,
+          "windowConductionW": 0,
+          "roofConductionW": -11.8,
+          "internalPartitionTransferW": 83.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -13.4,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 24.6
+        }
+      }
+    ],
+    "2026-10-12T01:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 24.48,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 1.38,
+        "heatFlows": {
+          "exteriorWallConductionW": -17.2,
+          "windowConductionW": 0,
+          "roofConductionW": -6.4,
+          "internalPartitionTransferW": -1.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -7.2,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 2.6
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 24.53,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 1.43,
+        "heatFlows": {
+          "exteriorWallConductionW": -9.2,
+          "windowConductionW": 0,
+          "roofConductionW": -6.5,
+          "internalPartitionTransferW": -4.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -7.4,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 7.3
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 24.3,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 1.2,
+        "heatFlows": {
+          "exteriorWallConductionW": -3.1,
+          "windowConductionW": 0,
+          "roofConductionW": -1.1,
+          "internalPartitionTransferW": 1.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.3,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 0.5
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 24.54,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 1.44,
+        "heatFlows": {
+          "exteriorWallConductionW": -16.6,
+          "windowConductionW": 0,
+          "roofConductionW": -9.3,
+          "internalPartitionTransferW": -3.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -10.5,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 9.8
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 24.7,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 1.6,
+        "heatFlows": {
+          "exteriorWallConductionW": -13.3,
+          "windowConductionW": 0,
+          "roofConductionW": -16.3,
+          "internalPartitionTransferW": -8.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -18.5,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 34.7
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 24.81,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 1.71,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -10.4,
+          "internalPartitionTransferW": -2.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -11.8,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 30.3
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 26.22,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 3.12,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -17.1,
+          "internalPartitionTransferW": -93.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -19.3,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 63.4
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 24.61,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 1.51,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -2.7,
+          "internalPartitionTransferW": 11.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -3,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 7.9
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 24.7,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 1.6,
+        "heatFlows": {
+          "exteriorWallConductionW": -16.9,
+          "windowConductionW": 0,
+          "roofConductionW": -4.8,
+          "internalPartitionTransferW": 9.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -5.4,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 9.3
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T01:00",
+        "temperatureC": 24.38,
+        "outdoorTempC": 23.1,
+        "temperatureDeltaC": 1.28,
+        "heatFlows": {
+          "exteriorWallConductionW": -67.7,
+          "windowConductionW": 0,
+          "roofConductionW": -13.9,
+          "internalPartitionTransferW": 90.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -15.8,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 16.3
+        }
+      }
+    ],
+    "2026-10-12T02:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 24.48,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 1.58,
+        "heatFlows": {
+          "exteriorWallConductionW": -22.5,
+          "windowConductionW": 0,
+          "roofConductionW": -8.3,
+          "internalPartitionTransferW": -1.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -9.4,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -6.8
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 24.54,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 1.64,
+        "heatFlows": {
+          "exteriorWallConductionW": -12.1,
+          "windowConductionW": 0,
+          "roofConductionW": -8.6,
+          "internalPartitionTransferW": -4.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -9.7,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -0.1
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 24.29,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 1.39,
+        "heatFlows": {
+          "exteriorWallConductionW": -4.2,
+          "windowConductionW": 0,
+          "roofConductionW": -1.5,
+          "internalPartitionTransferW": 2.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.7,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -1.3
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 24.55,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 1.65,
+        "heatFlows": {
+          "exteriorWallConductionW": -21.7,
+          "windowConductionW": 0,
+          "roofConductionW": -12.1,
+          "internalPartitionTransferW": -3.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -13.7,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -1.6
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 24.73,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 1.83,
+        "heatFlows": {
+          "exteriorWallConductionW": -17.2,
+          "windowConductionW": 0,
+          "roofConductionW": -21.2,
+          "internalPartitionTransferW": -8.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -23.9,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 19.7
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 24.87,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 1.97,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -13.4,
+          "internalPartitionTransferW": -3.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -15.2,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 22.5
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 26.35,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 3.45,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -20.4,
+          "internalPartitionTransferW": -99.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -23,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 50.5
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 24.66,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 1.76,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -3.5,
+          "internalPartitionTransferW": 10.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 5.4
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 24.73,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 1.83,
+        "heatFlows": {
+          "exteriorWallConductionW": -21.8,
+          "windowConductionW": 0,
+          "roofConductionW": -6.2,
+          "internalPartitionTransferW": 11,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -7,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 2.5
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T02:00",
+        "temperatureC": 24.39,
+        "outdoorTempC": 22.9,
+        "temperatureDeltaC": 1.49,
+        "heatFlows": {
+          "exteriorWallConductionW": -90.6,
+          "windowConductionW": 0,
+          "roofConductionW": -18.7,
+          "internalPartitionTransferW": 97.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -21.1,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -9.1
+        }
+      }
+    ],
+    "2026-10-12T03:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 24.45,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 2.05,
+        "heatFlows": {
+          "exteriorWallConductionW": -25.5,
+          "windowConductionW": 0,
+          "roofConductionW": -9.4,
+          "internalPartitionTransferW": -1.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -10.7,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -11.9
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 24.53,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 2.13,
+        "heatFlows": {
+          "exteriorWallConductionW": -13.8,
+          "windowConductionW": 0,
+          "roofConductionW": -9.8,
+          "internalPartitionTransferW": -5.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -11,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -4.6
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 24.26,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 1.86,
+        "heatFlows": {
+          "exteriorWallConductionW": -4.8,
+          "windowConductionW": 0,
+          "roofConductionW": -1.7,
+          "internalPartitionTransferW": 2.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -2.2
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 24.54,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 2.14,
+        "heatFlows": {
+          "exteriorWallConductionW": -24.7,
+          "windowConductionW": 0,
+          "roofConductionW": -13.8,
+          "internalPartitionTransferW": -3.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -15.6,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -8.2
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 24.75,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 2.35,
+        "heatFlows": {
+          "exteriorWallConductionW": -19.6,
+          "windowConductionW": 0,
+          "roofConductionW": -24.1,
+          "internalPartitionTransferW": -9.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -27.3,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 10.2
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 24.91,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 2.51,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -15.3,
+          "internalPartitionTransferW": -5.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -17.3,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 16.7
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 26.46,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 4.06,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -22.5,
+          "internalPartitionTransferW": -105.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -25.4,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 40.4
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 24.7,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 2.3,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -4,
+          "internalPartitionTransferW": 9.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4.6,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 3.3
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 24.73,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 2.33,
+        "heatFlows": {
+          "exteriorWallConductionW": -24.7,
+          "windowConductionW": 0,
+          "roofConductionW": -7,
+          "internalPartitionTransferW": 12.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -7.9,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -0.9
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T03:00",
+        "temperatureC": 24.37,
+        "outdoorTempC": 22.4,
+        "temperatureDeltaC": 1.97,
+        "heatFlows": {
+          "exteriorWallConductionW": -103.6,
+          "windowConductionW": 0,
+          "roofConductionW": -21.3,
+          "internalPartitionTransferW": 106.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -24.1,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -19.4
+        }
+      }
+    ],
+    "2026-10-12T04:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 24.41,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 2.31,
+        "heatFlows": {
+          "exteriorWallConductionW": -26.2,
+          "windowConductionW": 0,
+          "roofConductionW": -9.7,
+          "internalPartitionTransferW": -1.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -10.9,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -12.9
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 24.52,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 2.42,
+        "heatFlows": {
+          "exteriorWallConductionW": -14.3,
+          "windowConductionW": 0,
+          "roofConductionW": -10.1,
+          "internalPartitionTransferW": -5.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -11.4,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -6.1
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 24.23,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 2.13,
+        "heatFlows": {
+          "exteriorWallConductionW": -5,
+          "windowConductionW": 0,
+          "roofConductionW": -1.8,
+          "internalPartitionTransferW": 2.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -2.2
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 24.52,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 2.42,
+        "heatFlows": {
+          "exteriorWallConductionW": -25.5,
+          "windowConductionW": 0,
+          "roofConductionW": -14.2,
+          "internalPartitionTransferW": -3.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -16.1,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -10.1
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 24.76,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 2.66,
+        "heatFlows": {
+          "exteriorWallConductionW": -20.4,
+          "windowConductionW": 0,
+          "roofConductionW": -25.1,
+          "internalPartitionTransferW": -10.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -28.4,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 6.4
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 24.94,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 2.84,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -16.1,
+          "internalPartitionTransferW": -7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -18.2,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 13.4
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 26.54,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 4.44,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -23.4,
+          "internalPartitionTransferW": -110.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -26.5,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 33.3
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 24.72,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 2.62,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -4.2,
+          "internalPartitionTransferW": 9.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4.8,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 2.1
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 24.73,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 2.63,
+        "heatFlows": {
+          "exteriorWallConductionW": -25.6,
+          "windowConductionW": 0,
+          "roofConductionW": -7.2,
+          "internalPartitionTransferW": 13.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -8.2,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -1.3
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T04:00",
+        "temperatureC": 24.35,
+        "outdoorTempC": 22.1,
+        "temperatureDeltaC": 2.25,
+        "heatFlows": {
+          "exteriorWallConductionW": -107.1,
+          "windowConductionW": 0,
+          "roofConductionW": -22.1,
+          "internalPartitionTransferW": 113.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -25,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -17.5
+        }
+      }
+    ],
+    "2026-10-12T05:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 24.38,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.38,
+        "heatFlows": {
+          "exteriorWallConductionW": -25.8,
+          "windowConductionW": 0,
+          "roofConductionW": -9.5,
+          "internalPartitionTransferW": -0.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -10.8,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -11.9
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 24.5,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.5,
+        "heatFlows": {
+          "exteriorWallConductionW": -14.2,
+          "windowConductionW": 0,
+          "roofConductionW": -10,
+          "internalPartitionTransferW": -5.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -11.3,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -5.8
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 24.2,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.2,
+        "heatFlows": {
+          "exteriorWallConductionW": -4.9,
+          "windowConductionW": 0,
+          "roofConductionW": -1.8,
+          "internalPartitionTransferW": 2.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -1.8
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 24.5,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.5,
+        "heatFlows": {
+          "exteriorWallConductionW": -25.3,
+          "windowConductionW": 0,
+          "roofConductionW": -14.1,
+          "internalPartitionTransferW": -3.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -16,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -9.6
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 24.77,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.77,
+        "heatFlows": {
+          "exteriorWallConductionW": -20.5,
+          "windowConductionW": 0,
+          "roofConductionW": -25.2,
+          "internalPartitionTransferW": -11.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -28.5,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 5.6
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 24.97,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.97,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -16.2,
+          "internalPartitionTransferW": -8.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -18.3,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 11.7
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 26.61,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 4.61,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -23.8,
+          "internalPartitionTransferW": -114.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -26.9,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 28.4
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 24.73,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.73,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -4.3,
+          "internalPartitionTransferW": 8.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -4.8,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 1.6
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 24.73,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.73,
+        "heatFlows": {
+          "exteriorWallConductionW": -25.6,
+          "windowConductionW": 0,
+          "roofConductionW": -7.2,
+          "internalPartitionTransferW": 14,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -8.2,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -0.4
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T05:00",
+        "temperatureC": 24.33,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.33,
+        "heatFlows": {
+          "exteriorWallConductionW": -106.3,
+          "windowConductionW": 0,
+          "roofConductionW": -21.9,
+          "internalPartitionTransferW": 118.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -24.8,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": -11.3
+        }
+      }
+    ],
+    "2026-10-12T06:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 24.36,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.36,
+        "heatFlows": {
+          "exteriorWallConductionW": -19.2,
+          "windowConductionW": 0,
+          "roofConductionW": -7.1,
+          "internalPartitionTransferW": -0.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -8,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 0.5
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 24.5,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.5,
+        "heatFlows": {
+          "exteriorWallConductionW": -10.8,
+          "windowConductionW": 0,
+          "roofConductionW": -7.6,
+          "internalPartitionTransferW": -4.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -8.6,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 3.2
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 24.19,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.19,
+        "heatFlows": {
+          "exteriorWallConductionW": -3.6,
+          "windowConductionW": 0,
+          "roofConductionW": -1.3,
+          "internalPartitionTransferW": 3.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.5,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 0.9
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 24.49,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.49,
+        "heatFlows": {
+          "exteriorWallConductionW": -19.2,
+          "windowConductionW": 0,
+          "roofConductionW": -10.7,
+          "internalPartitionTransferW": -3.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -12.1,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 4.1
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 24.79,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.79,
+        "heatFlows": {
+          "exteriorWallConductionW": -16.2,
+          "windowConductionW": 0,
+          "roofConductionW": -20,
+          "internalPartitionTransferW": -11.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -22.6,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 21
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 25,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 3,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -13.1,
+          "internalPartitionTransferW": -8.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -14.9,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 17.7
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 26.68,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 4.68,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -21.1,
+          "internalPartitionTransferW": -117.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -23.8,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 31.3
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 24.75,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.75,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -3.4,
+          "internalPartitionTransferW": 8.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -3.8,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 3.8
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 24.74,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.74,
+        "heatFlows": {
+          "exteriorWallConductionW": -20.2,
+          "windowConductionW": 0,
+          "roofConductionW": -5.7,
+          "internalPartitionTransferW": 14.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -6.4,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 8.7
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T06:00",
+        "temperatureC": 24.34,
+        "outdoorTempC": 22,
+        "temperatureDeltaC": 2.34,
+        "heatFlows": {
+          "exteriorWallConductionW": -79.7,
+          "windowConductionW": 0,
+          "roofConductionW": -16.4,
+          "internalPartitionTransferW": 119.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -18.6,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 28.1
+        }
+      }
+    ],
+    "2026-10-12T07:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 24.41,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 1.81,
+        "heatFlows": {
+          "exteriorWallConductionW": -2.4,
+          "windowConductionW": 0,
+          "roofConductionW": -0.9,
+          "internalPartitionTransferW": 0.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 31.3
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 24.54,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 1.94,
+        "heatFlows": {
+          "exteriorWallConductionW": -2,
+          "windowConductionW": 0,
+          "roofConductionW": -1.4,
+          "internalPartitionTransferW": -3.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.6,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 26.7
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 24.26,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 1.66,
+        "heatFlows": {
+          "exteriorWallConductionW": -0.2,
+          "windowConductionW": 0,
+          "roofConductionW": -0.1,
+          "internalPartitionTransferW": 3.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -0.1,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 7.6
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 24.54,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 1.94,
+        "heatFlows": {
+          "exteriorWallConductionW": -3.5,
+          "windowConductionW": 0,
+          "roofConductionW": -2,
+          "internalPartitionTransferW": -2.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2.2,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 39.4
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 24.84,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 2.24,
+        "heatFlows": {
+          "exteriorWallConductionW": -4.8,
+          "windowConductionW": 0,
+          "roofConductionW": -6,
+          "internalPartitionTransferW": -10,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -6.7,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 63.4
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 25.06,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 2.46,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -4.8,
+          "internalPartitionTransferW": -7.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -5.4,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 37.1
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 26.77,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 4.17,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -13.3,
+          "internalPartitionTransferW": -117.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -15.1,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 47.2
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 24.81,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 2.21,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -1,
+          "internalPartitionTransferW": 10.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.1,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 10.7
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 24.84,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 2.24,
+        "heatFlows": {
+          "exteriorWallConductionW": -6.1,
+          "windowConductionW": 0,
+          "roofConductionW": -1.7,
+          "internalPartitionTransferW": 14.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -1.9,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 30.9
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T07:00",
+        "temperatureC": 24.44,
+        "outdoorTempC": 22.6,
+        "temperatureDeltaC": 1.84,
+        "heatFlows": {
+          "exteriorWallConductionW": -11.3,
+          "windowConductionW": 0,
+          "roofConductionW": -2.3,
+          "internalPartitionTransferW": 111.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -2.6,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 118.7
+        }
+      }
+    ],
+    "2026-10-12T08:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 24.56,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 0.36,
+        "heatFlows": {
+          "exteriorWallConductionW": 19.8,
+          "windowConductionW": 0,
+          "roofConductionW": 7.3,
+          "internalPartitionTransferW": 1.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 8.3,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 72.2
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 24.67,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 0.47,
+        "heatFlows": {
+          "exteriorWallConductionW": 9.7,
+          "windowConductionW": 0,
+          "roofConductionW": 6.9,
+          "internalPartitionTransferW": -0.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 7.8,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 59.1
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 24.44,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 0.24,
+        "heatFlows": {
+          "exteriorWallConductionW": 4.3,
+          "windowConductionW": 0,
+          "roofConductionW": 1.6,
+          "internalPartitionTransferW": 4.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 1.8,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 16.5
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 24.67,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 0.47,
+        "heatFlows": {
+          "exteriorWallConductionW": 17.3,
+          "windowConductionW": 0,
+          "roofConductionW": 9.7,
+          "internalPartitionTransferW": -0.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 10.9,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 87
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 24.97,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 0.77,
+        "heatFlows": {
+          "exteriorWallConductionW": 10.5,
+          "windowConductionW": 0,
+          "roofConductionW": 12.9,
+          "internalPartitionTransferW": -7.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 14.6,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 121.9
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 25.17,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 0.97,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 6.6,
+          "internalPartitionTransferW": -3.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 7.5,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 65.6
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 26.91,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 2.71,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": -2.7,
+          "internalPartitionTransferW": -115.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": -3.1,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 72.3
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 24.93,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 0.73,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 2.3,
+          "internalPartitionTransferW": 14.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 2.6,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 21.4
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 25.04,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 0.84,
+        "heatFlows": {
+          "exteriorWallConductionW": 12.6,
+          "windowConductionW": 0,
+          "roofConductionW": 3.6,
+          "internalPartitionTransferW": 12.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 4,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 59.4
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T08:00",
+        "temperatureC": 24.66,
+        "outdoorTempC": 24.2,
+        "temperatureDeltaC": 0.46,
+        "heatFlows": {
+          "exteriorWallConductionW": 78.8,
+          "windowConductionW": 0,
+          "roofConductionW": 16.2,
+          "internalPartitionTransferW": 92.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 18.4,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 229.3
+        }
+      }
+    ],
+    "2026-10-12T09:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 24.83,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": -1.57,
+        "heatFlows": {
+          "exteriorWallConductionW": 37.6,
+          "windowConductionW": 0,
+          "roofConductionW": 13.9,
+          "internalPartitionTransferW": 3.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 15.7,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 105.3
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 24.89,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": -1.51,
+        "heatFlows": {
+          "exteriorWallConductionW": 19.3,
+          "windowConductionW": 0,
+          "roofConductionW": 13.6,
+          "internalPartitionTransferW": 3.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 15.4,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 86.9
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 24.74,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": -1.66,
+        "heatFlows": {
+          "exteriorWallConductionW": 7.9,
+          "windowConductionW": 0,
+          "roofConductionW": 2.9,
+          "internalPartitionTransferW": 5.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 3.2,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 23.7
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 24.9,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": -1.5,
+        "heatFlows": {
+          "exteriorWallConductionW": 34.3,
+          "windowConductionW": 0,
+          "roofConductionW": 19.1,
+          "internalPartitionTransferW": 2.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 21.6,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 126.6
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 25.16,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": -1.24,
+        "heatFlows": {
+          "exteriorWallConductionW": 23.2,
+          "windowConductionW": 0,
+          "roofConductionW": 28.5,
+          "internalPartitionTransferW": -2.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 32.2,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 171.9
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 25.35,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": -1.05,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 16,
+          "internalPartitionTransferW": 3.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 18.2,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 92.1
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 27.11,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": 0.71,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 6.1,
+          "internalPartitionTransferW": -110.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 6.9,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 96
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 25.13,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": -1.27,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 4.9,
+          "internalPartitionTransferW": 19.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 5.6,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 31.8
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 25.36,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": -1.04,
+        "heatFlows": {
+          "exteriorWallConductionW": 27.5,
+          "windowConductionW": 0,
+          "roofConductionW": 7.8,
+          "internalPartitionTransferW": 10.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 8.8,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 80.7
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T09:00",
+        "temperatureC": 25,
+        "outdoorTempC": 26.4,
+        "temperatureDeltaC": -1.4,
+        "heatFlows": {
+          "exteriorWallConductionW": 150.1,
+          "windowConductionW": 0,
+          "roofConductionW": 30.9,
+          "internalPartitionTransferW": 65.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 35,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 305.4
+        }
+      }
+    ],
+    "2026-10-12T10:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 25.18,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -3.12,
+        "heatFlows": {
+          "exteriorWallConductionW": 50.1,
+          "windowConductionW": 0,
+          "roofConductionW": 18.5,
+          "internalPartitionTransferW": 4.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 20.9,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 128.9
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 25.18,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -3.12,
+        "heatFlows": {
+          "exteriorWallConductionW": 26.2,
+          "windowConductionW": 0,
+          "roofConductionW": 18.5,
+          "internalPartitionTransferW": 7.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 20.9,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 108.1
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 25.14,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -3.16,
+        "heatFlows": {
+          "exteriorWallConductionW": 10.3,
+          "windowConductionW": 0,
+          "roofConductionW": 3.7,
+          "internalPartitionTransferW": 6.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 4.2,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 28.6
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 25.2,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -3.1,
+        "heatFlows": {
+          "exteriorWallConductionW": 46.5,
+          "windowConductionW": 0,
+          "roofConductionW": 25.9,
+          "internalPartitionTransferW": 4.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 29.3,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 155.8
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 25.41,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -2.89,
+        "heatFlows": {
+          "exteriorWallConductionW": 32.4,
+          "windowConductionW": 0,
+          "roofConductionW": 39.9,
+          "internalPartitionTransferW": 1.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 45.1,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 210.2
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 25.58,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -2.72,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 23,
+          "internalPartitionTransferW": 10.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 26,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 114.2
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 27.35,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -0.95,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 12.6,
+          "internalPartitionTransferW": -104.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 14.2,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 116
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 25.41,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -2.89,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 6.8,
+          "internalPartitionTransferW": 24,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 7.7,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 40.6
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 25.76,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -2.54,
+        "heatFlows": {
+          "exteriorWallConductionW": 37.9,
+          "windowConductionW": 0,
+          "roofConductionW": 10.7,
+          "internalPartitionTransferW": 7.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 12.1,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 94.4
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T10:00",
+        "temperatureC": 25.42,
+        "outdoorTempC": 28.3,
+        "temperatureDeltaC": -2.88,
+        "heatFlows": {
+          "exteriorWallConductionW": 199.7,
+          "windowConductionW": 0,
+          "roofConductionW": 41.2,
+          "internalPartitionTransferW": 37.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 46.5,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 348.9
+        }
+      }
+    ],
+    "2026-10-12T11:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 25.59,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -4.21,
+        "heatFlows": {
+          "exteriorWallConductionW": 56.6,
+          "windowConductionW": 0,
+          "roofConductionW": 20.9,
+          "internalPartitionTransferW": 5.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 23.7,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 141.4
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 25.53,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -4.27,
+        "heatFlows": {
+          "exteriorWallConductionW": 29.9,
+          "windowConductionW": 0,
+          "roofConductionW": 21.2,
+          "internalPartitionTransferW": 10.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 23.9,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 120.9
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 25.58,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -4.22,
+        "heatFlows": {
+          "exteriorWallConductionW": 11.6,
+          "windowConductionW": 0,
+          "roofConductionW": 4.2,
+          "internalPartitionTransferW": 6.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 4.7,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 31
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 25.55,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -4.25,
+        "heatFlows": {
+          "exteriorWallConductionW": 53.1,
+          "windowConductionW": 0,
+          "roofConductionW": 29.6,
+          "internalPartitionTransferW": 6.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 33.5,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 172.5
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 25.71,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -4.09,
+        "heatFlows": {
+          "exteriorWallConductionW": 37.7,
+          "windowConductionW": 0,
+          "roofConductionW": 46.3,
+          "internalPartitionTransferW": 6.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 52.4,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 233.8
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 25.84,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -3.96,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 27,
+          "internalPartitionTransferW": 17.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 30.6,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 129.7
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 27.64,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -2.16,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 16.3,
+          "internalPartitionTransferW": -98,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 18.4,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 130.1
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 25.75,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -4.05,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 7.9,
+          "internalPartitionTransferW": 27.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 8.9,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 46.6
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 26.2,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -3.6,
+        "heatFlows": {
+          "exteriorWallConductionW": 43.2,
+          "windowConductionW": 0,
+          "roofConductionW": 12.2,
+          "internalPartitionTransferW": 4.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 13.8,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 99.9
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T11:00",
+        "temperatureC": 25.87,
+        "outdoorTempC": 29.8,
+        "temperatureDeltaC": -3.93,
+        "heatFlows": {
+          "exteriorWallConductionW": 225,
+          "windowConductionW": 0,
+          "roofConductionW": 46.4,
+          "internalPartitionTransferW": 12.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 52.4,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 360.1
+        }
+      }
+    ],
+    "2026-10-12T12:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 26.01,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -4.79,
+        "heatFlows": {
+          "exteriorWallConductionW": 56.4,
+          "windowConductionW": 0,
+          "roofConductionW": 20.8,
+          "internalPartitionTransferW": 5.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 23.6,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 141.4
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 25.89,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -4.91,
+        "heatFlows": {
+          "exteriorWallConductionW": 30.1,
+          "windowConductionW": 0,
+          "roofConductionW": 21.3,
+          "internalPartitionTransferW": 13.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 24.1,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 123.9
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 26.04,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -4.76,
+        "heatFlows": {
+          "exteriorWallConductionW": 11.5,
+          "windowConductionW": 0,
+          "roofConductionW": 4.1,
+          "internalPartitionTransferW": 6.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 4.7,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 30.4
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 25.92,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -4.88,
+        "heatFlows": {
+          "exteriorWallConductionW": 53.5,
+          "windowConductionW": 0,
+          "roofConductionW": 29.8,
+          "internalPartitionTransferW": 8.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 33.7,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 174.9
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 26.02,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -4.78,
+        "heatFlows": {
+          "exteriorWallConductionW": 38.4,
+          "windowConductionW": 0,
+          "roofConductionW": 47.2,
+          "internalPartitionTransferW": 10.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 53.3,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 240
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 26.14,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -4.66,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 27.7,
+          "internalPartitionTransferW": 23.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 31.3,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 136.8
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 27.95,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -2.85,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 16.8,
+          "internalPartitionTransferW": -92.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 19,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 136.5
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 26.12,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -4.68,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 7.9,
+          "internalPartitionTransferW": 30.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 9,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 49
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 26.64,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -4.16,
+        "heatFlows": {
+          "exteriorWallConductionW": 42.8,
+          "windowConductionW": 0,
+          "roofConductionW": 12.1,
+          "internalPartitionTransferW": 1.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 13.7,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 96.6
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T12:00",
+        "temperatureC": 26.32,
+        "outdoorTempC": 30.8,
+        "temperatureDeltaC": -4.48,
+        "heatFlows": {
+          "exteriorWallConductionW": 223.1,
+          "windowConductionW": 0,
+          "roofConductionW": 46,
+          "internalPartitionTransferW": -5.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 52,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 338.8
+        }
+      }
+    ],
+    "2026-10-12T13:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 26.43,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -4.77,
+        "heatFlows": {
+          "exteriorWallConductionW": 55.2,
+          "windowConductionW": 0,
+          "roofConductionW": 20.4,
+          "internalPartitionTransferW": 5.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 23,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 139.1
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 26.26,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -4.94,
+        "heatFlows": {
+          "exteriorWallConductionW": 29.7,
+          "windowConductionW": 0,
+          "roofConductionW": 21,
+          "internalPartitionTransferW": 14.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 23.8,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 124.4
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 26.49,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -4.71,
+        "heatFlows": {
+          "exteriorWallConductionW": 11.1,
+          "windowConductionW": 0,
+          "roofConductionW": 4,
+          "internalPartitionTransferW": 5.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 4.6,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 29.2
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 26.29,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -4.91,
+        "heatFlows": {
+          "exteriorWallConductionW": 52.8,
+          "windowConductionW": 0,
+          "roofConductionW": 29.4,
+          "internalPartitionTransferW": 9.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 33.3,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 174.4
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 26.34,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -4.86,
+        "heatFlows": {
+          "exteriorWallConductionW": 38.3,
+          "windowConductionW": 0,
+          "roofConductionW": 47,
+          "internalPartitionTransferW": 13,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 53.2,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 242.5
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 26.44,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -4.76,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 27.6,
+          "internalPartitionTransferW": 27.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 31.2,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 141.1
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 28.27,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -2.93,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 16.7,
+          "internalPartitionTransferW": -88.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 18.8,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 140.4
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 26.5,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -4.7,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 7.8,
+          "internalPartitionTransferW": 31.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 8.8,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 49.8
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 27.07,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -4.13,
+        "heatFlows": {
+          "exteriorWallConductionW": 41.6,
+          "windowConductionW": 0,
+          "roofConductionW": 11.8,
+          "internalPartitionTransferW": -0.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 13.3,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 92.5
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T13:00",
+        "temperatureC": 26.74,
+        "outdoorTempC": 31.2,
+        "temperatureDeltaC": -4.46,
+        "heatFlows": {
+          "exteriorWallConductionW": 217.7,
+          "windowConductionW": 0,
+          "roofConductionW": 44.9,
+          "internalPartitionTransferW": -17.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 50.7,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 319.1
+        }
+      }
+    ],
+    "2026-10-12T14:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 26.82,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -4.68,
+        "heatFlows": {
+          "exteriorWallConductionW": 46.6,
+          "windowConductionW": 0,
+          "roofConductionW": 17.2,
+          "internalPartitionTransferW": 5.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 19.5,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 123.4
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 26.62,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -4.88,
+        "heatFlows": {
+          "exteriorWallConductionW": 25.5,
+          "windowConductionW": 0,
+          "roofConductionW": 18,
+          "internalPartitionTransferW": 15.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 20.4,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 114.1
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 26.9,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -4.6,
+        "heatFlows": {
+          "exteriorWallConductionW": 9.4,
+          "windowConductionW": 0,
+          "roofConductionW": 3.4,
+          "internalPartitionTransferW": 4.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 3.8,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 25.3
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 26.65,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -4.85,
+        "heatFlows": {
+          "exteriorWallConductionW": 45.2,
+          "windowConductionW": 0,
+          "roofConductionW": 25.2,
+          "internalPartitionTransferW": 9.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 28.5,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 158.2
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 26.64,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -4.86,
+        "heatFlows": {
+          "exteriorWallConductionW": 33,
+          "windowConductionW": 0,
+          "roofConductionW": 40.6,
+          "internalPartitionTransferW": 14.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 45.9,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 225.5
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 26.75,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -4.75,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 23.8,
+          "internalPartitionTransferW": 30.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 26.9,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 135.5
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 28.59,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -2.91,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 13,
+          "internalPartitionTransferW": -86.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 14.7,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 134.9
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 26.87,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -4.63,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 6.6,
+          "internalPartitionTransferW": 30.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 7.5,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 46.9
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 27.46,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -4.04,
+        "heatFlows": {
+          "exteriorWallConductionW": 34.3,
+          "windowConductionW": 0,
+          "roofConductionW": 9.7,
+          "internalPartitionTransferW": -2.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 11,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 79.3
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T14:00",
+        "temperatureC": 27.11,
+        "outdoorTempC": 31.5,
+        "temperatureDeltaC": -4.39,
+        "heatFlows": {
+          "exteriorWallConductionW": 182.8,
+          "windowConductionW": 0,
+          "roofConductionW": 37.7,
+          "internalPartitionTransferW": -22.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 42.6,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 264.1
+        }
+      }
+    ],
+    "2026-10-12T15:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 27.16,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -3.94,
+        "heatFlows": {
+          "exteriorWallConductionW": 37.4,
+          "windowConductionW": 0,
+          "roofConductionW": 13.8,
+          "internalPartitionTransferW": 4.4,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 15.6,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 106.4
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 26.94,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -4.16,
+        "heatFlows": {
+          "exteriorWallConductionW": 20.8,
+          "windowConductionW": 0,
+          "roofConductionW": 14.7,
+          "internalPartitionTransferW": 14.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 16.6,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 101.8
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 27.24,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -3.86,
+        "heatFlows": {
+          "exteriorWallConductionW": 7.5,
+          "windowConductionW": 0,
+          "roofConductionW": 2.7,
+          "internalPartitionTransferW": 3.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 3.1,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 21
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 26.96,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -4.14,
+        "heatFlows": {
+          "exteriorWallConductionW": 36.9,
+          "windowConductionW": 0,
+          "roofConductionW": 20.6,
+          "internalPartitionTransferW": 9.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 23.3,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 139.9
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 26.93,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -4.17,
+        "heatFlows": {
+          "exteriorWallConductionW": 27.2,
+          "windowConductionW": 0,
+          "roofConductionW": 33.5,
+          "internalPartitionTransferW": 15.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 37.9,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 205.1
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 27.04,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -4.06,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 19.5,
+          "internalPartitionTransferW": 30.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 22.1,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 127
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 28.9,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -2.2,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 8.8,
+          "internalPartitionTransferW": -85.6,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 10,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 126.6
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 27.21,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -3.89,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 5.3,
+          "internalPartitionTransferW": 29.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 6,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 42.5
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 27.78,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -3.32,
+        "heatFlows": {
+          "exteriorWallConductionW": 26.5,
+          "windowConductionW": 0,
+          "roofConductionW": 7.5,
+          "internalPartitionTransferW": -2.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 8.5,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 66.2
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T15:00",
+        "temperatureC": 27.41,
+        "outdoorTempC": 31.1,
+        "temperatureDeltaC": -3.69,
+        "heatFlows": {
+          "exteriorWallConductionW": 146.1,
+          "windowConductionW": 0,
+          "roofConductionW": 30.1,
+          "internalPartitionTransferW": -19.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 34,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 214.2
+        }
+      }
+    ],
+    "2026-10-12T16:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 27.46,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -3.14,
+        "heatFlows": {
+          "exteriorWallConductionW": 28.8,
+          "windowConductionW": 0,
+          "roofConductionW": 10.6,
+          "internalPartitionTransferW": 3.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 12,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 90.1
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 27.23,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -3.37,
+        "heatFlows": {
+          "exteriorWallConductionW": 16.4,
+          "windowConductionW": 0,
+          "roofConductionW": 11.6,
+          "internalPartitionTransferW": 13.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 13.1,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 89.4
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 27.52,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -3.08,
+        "heatFlows": {
+          "exteriorWallConductionW": 5.7,
+          "windowConductionW": 0,
+          "roofConductionW": 2.1,
+          "internalPartitionTransferW": 2.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 2.3,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 17.1
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 27.24,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -3.36,
+        "heatFlows": {
+          "exteriorWallConductionW": 29,
+          "windowConductionW": 0,
+          "roofConductionW": 16.2,
+          "internalPartitionTransferW": 9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 18.3,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 121.9
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 27.19,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -3.41,
+        "heatFlows": {
+          "exteriorWallConductionW": 21.6,
+          "windowConductionW": 0,
+          "roofConductionW": 26.6,
+          "internalPartitionTransferW": 15.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 30.1,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 184.6
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 27.3,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -3.3,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 15.3,
+          "internalPartitionTransferW": 30.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 17.3,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 117.3
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 29.18,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -1.42,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 4.8,
+          "internalPartitionTransferW": -86.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 5.4,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 117.1
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 27.52,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -3.08,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 4,
+          "internalPartitionTransferW": 27,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 4.6,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 37.6
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 28.06,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -2.54,
+        "heatFlows": {
+          "exteriorWallConductionW": 19.3,
+          "windowConductionW": 0,
+          "roofConductionW": 5.4,
+          "internalPartitionTransferW": -2.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 6.2,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 54.5
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T16:00",
+        "temperatureC": 27.66,
+        "outdoorTempC": 30.6,
+        "temperatureDeltaC": -2.94,
+        "heatFlows": {
+          "exteriorWallConductionW": 112,
+          "windowConductionW": 0,
+          "roofConductionW": 23.1,
+          "internalPartitionTransferW": -11.7,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 26.1,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 172.9
+        }
+      }
+    ],
+    "2026-10-12T17:00": [
+      {
+        "roomId": "R1",
+        "roomLabel": "BEDROOM #2",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 27.72,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -2.38,
+        "heatFlows": {
+          "exteriorWallConductionW": 25.9,
+          "windowConductionW": 0,
+          "roofConductionW": 9.6,
+          "internalPartitionTransferW": 2.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 10.8,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 84.2
+        }
+      },
+      {
+        "roomId": "R2",
+        "roomLabel": "BEDROOM #3",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 27.49,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -2.61,
+        "heatFlows": {
+          "exteriorWallConductionW": 14.9,
+          "windowConductionW": 0,
+          "roofConductionW": 10.5,
+          "internalPartitionTransferW": 12,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 11.9,
+          "internalGainsW": 35.1,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 84.3
+        }
+      },
+      {
+        "roomId": "R3",
+        "roomLabel": "BATHROOM",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 27.77,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -2.33,
+        "heatFlows": {
+          "exteriorWallConductionW": 5.2,
+          "windowConductionW": 0,
+          "roofConductionW": 1.9,
+          "internalPartitionTransferW": 2.3,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 2.1,
+          "internalGainsW": 4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 15.5
+        }
+      },
+      {
+        "roomId": "R4",
+        "roomLabel": "MASTER BEDROOM",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 27.49,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -2.61,
+        "heatFlows": {
+          "exteriorWallConductionW": 26.5,
+          "windowConductionW": 0,
+          "roofConductionW": 14.8,
+          "internalPartitionTransferW": 8.2,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 16.7,
+          "internalGainsW": 49.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 115.5
+        }
+      },
+      {
+        "roomId": "R5",
+        "roomLabel": "FAMILY ROOM",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 27.42,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -2.68,
+        "heatFlows": {
+          "exteriorWallConductionW": 19.8,
+          "windowConductionW": 0,
+          "roofConductionW": 24.4,
+          "internalPartitionTransferW": 14.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 27.6,
+          "internalGainsW": 91,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 177.6
+        }
+      },
+      {
+        "roomId": "R6",
+        "roomLabel": "DINNING AREA",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 27.56,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -2.54,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 13.9,
+          "internalPartitionTransferW": 28.8,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 15.7,
+          "internalGainsW": 54.6,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 113
+        }
+      },
+      {
+        "roomId": "R7",
+        "roomLabel": "KITCHEN",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 29.45,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -0.65,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 3.4,
+          "internalPartitionTransferW": -88.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 3.8,
+          "internalGainsW": 193.4,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 112.5
+        }
+      },
+      {
+        "roomId": "R8",
+        "roomLabel": "CLOSET",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 27.8,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -2.3,
+        "heatFlows": {
+          "exteriorWallConductionW": 0,
+          "windowConductionW": 0,
+          "roofConductionW": 3.6,
+          "internalPartitionTransferW": 24.9,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 4.1,
+          "internalGainsW": 2,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 34.5
+        }
+      },
+      {
+        "roomId": "R9",
+        "roomLabel": "WASHROOM",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 28.29,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -1.81,
+        "heatFlows": {
+          "exteriorWallConductionW": 17,
+          "windowConductionW": 0,
+          "roofConductionW": 4.8,
+          "internalPartitionTransferW": -2.5,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 5.4,
+          "internalGainsW": 26.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 51.2
+        }
+      },
+      {
+        "roomId": "R10",
+        "roomLabel": "Corridor",
+        "timestamp": "2026-10-12T17:00",
+        "temperatureC": 27.87,
+        "outdoorTempC": 30.1,
+        "temperatureDeltaC": -2.23,
+        "heatFlows": {
+          "exteriorWallConductionW": 101.9,
+          "windowConductionW": 0,
+          "roofConductionW": 21,
+          "internalPartitionTransferW": -3.1,
+          "solarGainW": 0,
+          "ventilationLossOrGainW": 23.7,
+          "internalGainsW": 23.5,
+          "hvacHeatW": 0,
+          "netHeatFlowW": 167.1
+        }
+      }
+    ]
+  },
+  "roomSummaries": {
+    "R1": {
+      "roomId": "R1",
+      "label": "BEDROOM #2",
+      "minTemperatureC": 24.15,
+      "maxTemperatureC": 27.72,
+      "meanTemperatureC": 25.13,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 1.3
+    },
+    "R2": {
+      "roomId": "R2",
+      "label": "BEDROOM #3",
+      "minTemperatureC": 24.13,
+      "maxTemperatureC": 27.49,
+      "meanTemperatureC": 25.12,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 1.2
+    },
+    "R3": {
+      "roomId": "R3",
+      "label": "BATHROOM",
+      "minTemperatureC": 24.1,
+      "maxTemperatureC": 27.77,
+      "meanTemperatureC": 25.05,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 0.26
+    },
+    "R4": {
+      "roomId": "R4",
+      "label": "MASTER BEDROOM",
+      "minTemperatureC": 24.14,
+      "maxTemperatureC": 27.49,
+      "meanTemperatureC": 25.13,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 1.69
+    },
+    "R5": {
+      "roomId": "R5",
+      "label": "FAMILY ROOM",
+      "minTemperatureC": 24.14,
+      "maxTemperatureC": 27.42,
+      "meanTemperatureC": 25.25,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 2.63
+    },
+    "R6": {
+      "roomId": "R6",
+      "label": "DINNING AREA",
+      "minTemperatureC": 24.14,
+      "maxTemperatureC": 27.56,
+      "meanTemperatureC": 25.37,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 1.64
+    },
+    "R7": {
+      "roomId": "R7",
+      "label": "KITCHEN",
+      "minTemperatureC": 24.44,
+      "maxTemperatureC": 29.45,
+      "meanTemperatureC": 26.85,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 2.3
+    },
+    "R8": {
+      "roomId": "R8",
+      "label": "CLOSET",
+      "minTemperatureC": 24.06,
+      "maxTemperatureC": 27.8,
+      "meanTemperatureC": 25.27,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 0.51
+    },
+    "R9": {
+      "roomId": "R9",
+      "label": "WASHROOM",
+      "minTemperatureC": 24.17,
+      "maxTemperatureC": 28.29,
+      "meanTemperatureC": 25.5,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 0.96
+    },
+    "R10": {
+      "roomId": "R10",
+      "label": "Corridor",
+      "minTemperatureC": 24.1,
+      "maxTemperatureC": 27.87,
+      "meanTemperatureC": 25.18,
+      "peakSolarGainW": 0,
+      "totalHeatGainedKWh": 3.13
+    }
+  },
+  "diagnostics": {
+    "geometryWarnings": [
+      "[Geometry warning] SCALE_INCONSISTENCY: The drawing exhibits inconsistent scaling. Horizontal dimensions (e.g., 40' = 800px => 20 px/ft) differ from vertical dimensions (e.g., 30' = 500px => 16.66 px/ft). A primary scale of 20 px/ft is used for `pixelsPerUnit`, but real area calculations for unlabeled rooms use a mixed scale (horizontal for width, vertical for depth).",
+      "[Geometry warning] ROOM_DIMENSION_DISCREPANCY: Annotated room dimensions do not consistently match drawn pixel dimensions when using a single scale factor. For example, BEDROOM #2 annotated 9'x12' is drawn as 180px x 120px, which corresponds to 9'x6' at 20px/ft. Real area is calculated from annotated dimensions where available, otherwise from pixel dimensions using the mixed scale.",
+      "[Geometry warning] WALL_THICKNESS_DISCREPANCY: Drawn wall thickness (approx. 30px) implies 1.5ft at 20px/ft, which is unusually thick for standard construction. An inferred real thickness of 0.5ft (6 inches) is used.",
+      "[Geometry warning] DANGLING_WALL_REF: Room R5 references wall W5_R5 which does not exist in walls[].",
+      "[Geometry warning] DANGLING_WALL_REF: Room R6 references wall W5_R6 which does not exist in walls[].",
+      "[Geometry warning] DANGLING_WALL_REF: Room R7 references wall W5_R7 which does not exist in walls[].",
+      "[Geometry warning] DANGLING_WALL_REF: Room R10 references wall W5_R5 which does not exist in walls[].",
+      "[Geometry warning] DANGLING_WALL_REF: Room R10 references wall W5_R6 which does not exist in walls[].",
+      "[Geometry warning] DANGLING_WALL_REF: Room R10 references wall W5_R7 which does not exist in walls[]."
+    ],
+    "environmentalWarnings": [],
+    "missingInputs": [
+      "building_north_orientation"
+    ],
+    "approximationsUsed": [
+      "Building North orientation is unspecified. Assuming drawing top is North (0°).",
+      "Estimated shared partition between room R7 and R9 (8.1 m²).",
+      "Estimated shared partition between room R8 and R7 (8.1 m²).",
+      "Estimated shared partition between room R9 and R8 (8.1 m²)."
+    ],
+    "confidence": "medium",
+    "confidenceRationale": "Simulation relies on geometric approximations: Building North orientation is unspecified. Assuming drawing top is North (0°).; Estimated shared partition between room R7 and R9 (8.1 m²)..",
+    "notes": [
+      "Room temperatures are deterministic prototype estimates for relative thermal comparisons.",
+      "Not a substitute for CFD or accredited ASHRAE 140 / EnergyPlus building energy validation."
+    ]
+  },
+  "createdAt": "2026-10-11T13:29:08.105Z"
+}
