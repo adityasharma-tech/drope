@@ -49,6 +49,43 @@ Resources:
   UploadBucket:
     Type: AWS::S3::Bucket
 
+  AnalyzeFloorplanFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: analyse-floorplan/
+      Handler: app.lambdaHandler
+      Runtime: nodejs24.x
+      Architectures:
+      - x86_64
+      Timeout: 30
+      Environment:
+        Variables:
+          UPLOAD_BUCKET: !Ref UploadBucket
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref UploadBucket
+        - S3WritePolicy:
+            BucketName: !Ref UploadBucket
+      Events:
+        FloorplanUploadEvent:
+          Type: S3
+          Properties:
+            Bucket: !Ref UploadBucket
+            Events: s3:ObjectCreated:*
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: projects/
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: es2020
+        Sourcemap: true
+        EntryPoints:
+        - app.ts
+
   ApplicationResourceGroup:
     Type: AWS::ResourceGroups::Group
     Properties:
@@ -75,6 +112,12 @@ Outputs:
   GetUploadUrlFunctionIamRole:
     Description: Implicit IAM Role created for Get Upload URL function
     Value: !GetAtt GetUploadUrlFunctionRole.Arn
+  AnalyzeFloorplanFunction:
+    Description: Analyze Floorplan Lambda Function ARN
+    Value: !GetAtt AnalyzeFloorplanFunction.Arn
+  AnalyzeFloorplanFunctionIamRole:
+    Description: Implicit IAM Role created for Analyze Floorplan function
+    Value: !GetAtt AnalyzeFloorplanFunctionRole.Arn
   UploadBucketName:
     Description: S3 bucket name for uploads
     Value: !Ref UploadBucket
