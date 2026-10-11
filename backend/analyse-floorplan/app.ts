@@ -6,6 +6,8 @@ import { extractFloorPlanGeometry } from './services/floorplan/geometry-extracti
 
 const s3Client = new S3Client({});
 const EXPECTED_BUCKET = process.env.UPLOAD_BUCKET || '';
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = process.env.GEMINI_MODEL;
 const BEDROCK_MANTLE_API_KEY = process.env.BEDROCK_MANTLE_API_KEY;
 const BEDROCK_MANTLE_ENDPOINT = process.env.BEDROCK_MANTLE_ENDPOINT;
 const BEDROCK_MANTLE_MODEL_ID = process.env.BEDROCK_MANTLE_MODEL_ID || process.env.BEDROCK_MODEL_ID;
@@ -98,9 +100,9 @@ export const lambdaHandler: S3Handler = async (event: S3Event): Promise<void> =>
             fileSizeBytes = imageBytes.length;
 
             console.log(`Downloaded image: ${fileSizeBytes} bytes, type: ${contentType}`);
-            console.log(`Starting geometry extraction via Bedrock…`);
+            console.log(`Starting geometry extraction (Gemini primary, Bedrock Mantle backup)…`);
 
-            // Run geometry extraction via Bedrock Mantle
+            // Run geometry extraction: Gemini primary, Bedrock Mantle backup
             const floorPlanModel = await extractFloorPlanGeometry(
                 {
                     imageBytes,
@@ -108,6 +110,8 @@ export const lambdaHandler: S3Handler = async (event: S3Event): Promise<void> =>
                     sourceName: sourceKey,
                 },
                 {
+                    ...(GEMINI_API_KEY ? { geminiApiKey: GEMINI_API_KEY } : {}),
+                    ...(GEMINI_MODEL ? { geminiModel: GEMINI_MODEL } : {}),
                     ...(BEDROCK_MANTLE_ENDPOINT ? { endpointUrl: BEDROCK_MANTLE_ENDPOINT } : {}),
                     ...(BEDROCK_MANTLE_API_KEY ? { apiKey: BEDROCK_MANTLE_API_KEY } : {}),
                     ...(BEDROCK_MANTLE_MODEL_ID ? { modelId: BEDROCK_MANTLE_MODEL_ID } : {}),

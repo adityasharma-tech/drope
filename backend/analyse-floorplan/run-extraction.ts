@@ -1,21 +1,25 @@
 #!/usr/bin/env ts-node
 /**
- * Local runner for the floor-plan geometry extraction service using Bedrock Mantle.
+ * Local runner for the floor-plan geometry extraction service.
+ * Primary provider: Native Google Gemini API (gemini-2.5-flash / gemini-1.5-pro)
+ * Backup provider: Bedrock Mantle (qwen.qwen3-vl-235b-a22b-instruct)
  *
  * Usage:
  *   cd backend/analyse-floorplan
- *   BEDROCK_MANTLE_API_KEY="your-key" KNOWN_WIDTH_FT=40 npx ts-node run-extraction.ts [path/to/floor_plan.png] [output.json]
+ *   GEMINI_API_KEY="your-gemini-key" KNOWN_WIDTH_FT=40 npx ts-node run-extraction.ts [path/to/floor_plan.png] [output.json]
  *
  * Defaults:
- *   image    → ~/Downloads/floor_plan.png
- *   output   → ./extraction-result.json
- *   endpoint → https://bedrock-mantle.ap-south-1.api.aws/v1/chat/completions
- *   model    → qwen.qwen3-vl-235b-a22b-instruct
+ *   image        → ~/Downloads/floor_plan.png
+ *   output       → ./extraction-result.json
+ *   gemini model → gemini-2.5-flash
+ *   bedrock model→ qwen.qwen3-vl-235b-a22b-instruct
  *
  * Environment variables:
- *   BEDROCK_MANTLE_API_KEY  – Your Mantle API key (required)
+ *   GEMINI_API_KEY          – Google Gemini API Key (primary)
+ *   GEMINI_MODEL            – Gemini model name (default: gemini-2.5-flash)
+ *   BEDROCK_MANTLE_API_KEY  – Bedrock Mantle API Key (backup)
  *   BEDROCK_MANTLE_ENDPOINT – Custom Mantle endpoint URL (optional)
- *   BEDROCK_MANTLE_MODEL_ID – Model ID (default: qwen.qwen3-vl-235b-a22b-instruct)
+ *   BEDROCK_MANTLE_MODEL_ID – Bedrock Model ID (default: qwen.qwen3-vl-235b-a22b-instruct)
  *   KNOWN_WIDTH_FT          – Calibration: known building width in feet (e.g. 40)
  *   NORTH_ANGLE_DEG         – North angle in degrees clockwise from image top
  */
@@ -52,17 +56,19 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
-  const endpointUrl =
+  const geminiApiKey = process.env.GEMINI_API_KEY;
+  const geminiModel = process.env.GEMINI_MODEL ?? 'gemini-2.5-flash';
+
+  const bedrockApiKey = process.env.BEDROCK_MANTLE_API_KEY;
+  const bedrockEndpoint =
     process.env.BEDROCK_MANTLE_ENDPOINT ??
     'https://bedrock-mantle.ap-south-1.api.aws/v1/chat/completions';
-
-  const modelId =
+  const bedrockModelId =
     process.env.BEDROCK_MANTLE_MODEL_ID ?? 'qwen.qwen3-vl-235b-a22b-instruct';
 
-  const apiKey = process.env.BEDROCK_MANTLE_API_KEY;
-  if (!apiKey) {
-    console.error('Error: BEDROCK_MANTLE_API_KEY environment variable is not set.');
-    console.error('Please run with: BEDROCK_MANTLE_API_KEY="your-key" npx ts-node run-extraction.ts ...');
+  if (!geminiApiKey && !bedrockApiKey) {
+    console.error('Error: Neither GEMINI_API_KEY nor BEDROCK_MANTLE_API_KEY is set.');
+    console.error('Please run with: GEMINI_API_KEY="your-key" npx ts-node run-extraction.ts ...');
     process.exit(1);
   }
 
@@ -82,12 +88,12 @@ async function main(): Promise<void> {
   }
 
   console.log('──────────────────────────────────────────────');
-  console.log('Floor-Plan Geometry Extraction (Bedrock Mantle)');
+  console.log('Floor-Plan Geometry Extraction');
   console.log('──────────────────────────────────────────────');
   console.log(`  Image    : ${imagePath}`);
   console.log(`  Output   : ${outputPath}`);
-  console.log(`  Endpoint : ${endpointUrl}`);
-  console.log(`  Model    : ${modelId}`);
+  console.log(`  Primary  : ${geminiApiKey ? `Gemini (${geminiModel})` : 'Not configured'}`);
+  console.log(`  Backup   : ${bedrockApiKey ? `Bedrock Mantle (${bedrockModelId})` : 'Not configured'}`);
   if (knownWidthReal) console.log(`  Width    : ${knownWidthReal.value} ${knownWidthReal.unit} (calibration override)`);
   if (northAngleDeg !== undefined) console.log(`  North    : ${northAngleDeg}° (override)`);
   console.log('──────────────────────────────────────────────\n');
@@ -96,15 +102,17 @@ async function main(): Promise<void> {
   const sourceName = path.basename(imagePath);
 
   console.log(`Reading image (${(imageBytes.length / 1024).toFixed(1)} KB)…`);
-  console.log('Sending to Bedrock Mantle for analysis… (this may take 15–45 s)\n');
+  console.log('Sending for analysis… (this may take 15–45 s)\n');
 
   const startMs = Date.now();
   const model = await extractFloorPlanGeometry(
     { imageBytes, mimeType, sourceName, knownWidthReal, northAngleDeg },
     {
-      endpointUrl,
-      apiKey,
-      modelId,
+      geminiApiKey,
+      geminiModel,
+      endpointUrl: bedrockEndpoint,
+      apiKey: bedrockApiKey,
+      modelId: bedrockModelId,
     },
   );
   const elapsedMs = Date.now() - startMs;

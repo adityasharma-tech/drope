@@ -287,6 +287,19 @@ export interface ExtractionInput {
 
 export interface ExtractionOptions {
   /**
+   * Primary provider to attempt first.
+   * Default: "gemini" if GEMINI_API_KEY is present or provided, otherwise "bedrock".
+   */
+  primaryProvider?: 'gemini' | 'bedrock';
+  /**
+   * Gemini API Key (defaults to GEMINI_API_KEY environment variable).
+   */
+  geminiApiKey?: string;
+  /**
+   * Gemini model name (default: "gemini-2.5-flash", can also be "gemini-1.5-pro", "gemini-1.5-flash").
+   */
+  geminiModel?: string;
+  /**
    * Bedrock Mantle OpenAI-compatible Chat Completions endpoint URL.
    * Default: "https://bedrock-mantle.ap-south-1.api.aws/v1/chat/completions"
    */
@@ -304,7 +317,7 @@ export interface ExtractionOptions {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Bedrock Mantle System Prompt
+// Bedrock Mantle & Gemini System Prompt
 // ─────────────────────────────────────────────────────────────────────────────
 
 const EXTRACTION_SYSTEM_PROMPT = `You are an expert architectural drawing analyser.
@@ -426,6 +439,40 @@ function repairTruncatedJson(raw: string): string {
   return repaired;
 }
 
+function parseModelJson(rawOutput: string): { model: FloorPlanModel; wasTruncated: boolean } {
+  const cleaned = stripMarkdown(rawOutput);
+
+  try {
+    const parsed = JSON.parse(cleaned) as FloorPlanModel;
+    return { model: parsed, wasTruncated: false };
+  } catch (firstErr) {
+    console.warn(
+      `[geometry-extraction] JSON parse failed (${(firstErr as Error).message}). Attempting truncation repair…`,
+    );
+    const repaired = repairTruncatedJson(cleaned);
+    try {
+      const parsed = JSON.parse(repaired) as FloorPlanModel;
+      console.warn(`[geometry-extraction] Truncation repair succeeded.`);
+      if (!parsed.validationWarnings) parsed.validationWarnings = [];
+      parsed.validationWarnings.push({
+        severity: 'warning',
+        code: 'RESPONSE_TRUNCATED',
+        message:
+          `Model response was truncated at ${cleaned.length} characters and was automatically repaired. ` +
+          `Some items near the end of the JSON may be partial or missing.`,
+      });
+      return { model: parsed, wasTruncated: true };
+    } catch (repairErr) {
+      throw new Error(
+        `Output could not be parsed as FloorPlanModel JSON even after truncation repair.\n` +
+        `Original parse error: ${(firstErr as Error).message}\n` +
+        `Repair parse error: ${(repairErr as Error).message}\n` +
+        `Raw output snippet: ${cleaned.slice(0, 500)}`,
+      );
+    }
+  }
+}
+
 function buildAdditionalUserInstructions(input: ExtractionInput): string {
   const lines: string[] = [
     `Image source filename: ${input.sourceName}`,
@@ -510,6 +557,133 @@ function postProcessModel(model: FloorPlanModel, sourceName: string, modelId: st
 }
 
 /**
+ * Sends a request to the native Gemini API via HTTPS.
+ */
+function sendGeminiRequest(
+  apiKey: string,
+  modelName: string,
+  payload: Record<string, unknown>,
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const postData = JSON.stringify(payload);
+    const trimmedKey = apiKey.trim();
+    const isOAuthToken = trimmedKey.startsWith('AQ.') || trimmedKey.startsWith('ya29.');
+
+    const apiPath = isOAuthToken
+      ? `/v1beta/models/${encodeURIComponent(modelName)}:generateContent`
+      : `/v1beta/models/${encodeURIComponent(modelName)}:generateContent?key=${encodeURIComponent(trimmedKey)}`;
+
+    const headers: Record<string, string | number> = {
+      'content-type': 'application/json',
+      'content-length': Buffer.byteLength(postData),
+    };
+
+    if (isOAuthToken) {
+      headers['Authorization'] = `Bearer ${trimmedKey}`;
+    } else {
+      headers['x-goog-api-key'] = trimmedKey;
+    }
+
+    const reqOptions: https.RequestOptions = {
+      hostname: 'generativelanguage.googleapis.com',
+      port: 443,
+      path: apiPath,
+      method: 'POST',
+      headers,
+    };
+
+    const req = https.request(reqOptions, (res) => {
+      const chunks: Buffer[] = [];
+      res.on('data', (chunk) => chunks.push(chunk));
+      res.on('end', () => {
+        const body = Buffer.concat(chunks).toString('utf-8');
+        if (res.statusCode && (res.statusCode < 200 || res.statusCode >= 300)) {
+          return reject(
+            new Error(`Gemini API HTTP ${res.statusCode} ${res.statusMessage}: ${body.slice(0, 500)}`),
+          );
+        }
+        resolve(body);
+      });
+    });
+
+    req.on('error', (err) => reject(err));
+    req.write(postData);
+    req.end();
+  });
+}
+
+/**
+ * Extract geometry natively using Google Gemini API.
+ */
+async function extractWithGemini(
+  input: ExtractionInput,
+  apiKey: string,
+  modelName: string,
+): Promise<FloorPlanModel> {
+  const base64Image = input.imageBytes.toString('base64');
+  const userInstructions = buildAdditionalUserInstructions(input);
+
+  const payload = {
+    systemInstruction: {
+      parts: [{ text: EXTRACTION_SYSTEM_PROMPT }],
+    },
+    contents: [
+      {
+        role: 'user',
+        parts: [
+          {
+            inlineData: {
+              mimeType: input.mimeType,
+              data: base64Image,
+            },
+          },
+          {
+            text: userInstructions,
+          },
+        ],
+      },
+    ],
+    generationConfig: {
+      temperature: 0.1,
+      responseMimeType: 'application/json',
+    },
+  };
+
+  const rawResponse = await sendGeminiRequest(apiKey, modelName, payload);
+
+  let geminiResult: {
+    candidates?: {
+      content?: {
+        parts?: { text?: string }[];
+      };
+      finishReason?: string;
+    }[];
+    error?: { code: number; message: string; status: string };
+  };
+
+  try {
+    geminiResult = JSON.parse(rawResponse);
+  } catch {
+    throw new Error(`Gemini API returned non-JSON response: ${rawResponse.slice(0, 300)}`);
+  }
+
+  if (geminiResult.error) {
+    throw new Error(`Gemini API error [${geminiResult.error.status}]: ${geminiResult.error.message}`);
+  }
+
+  const candidate = geminiResult.candidates?.[0];
+  const textContent = candidate?.content?.parts?.[0]?.text;
+
+  if (!textContent) {
+    throw new Error(`Gemini API response contained no generated text content.`);
+  }
+
+  const { model: rawModel } = parseModelJson(textContent);
+  applyOverrides(rawModel, input);
+  return postProcessModel(rawModel, input.sourceName, modelName);
+}
+
+/**
  * Sends a request to the Bedrock Mantle OpenAI-compatible Chat Completions endpoint via HTTPS.
  */
 function sendMantleRequest(
@@ -555,44 +729,18 @@ function sendMantleRequest(
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Public API
-// ─────────────────────────────────────────────────────────────────────────────
-
 /**
- * Extract a structured FloorPlanModel from a floor-plan image using Bedrock Mantle.
+ * Extract geometry using Bedrock Mantle.
  */
-export async function extractFloorPlanGeometry(
+async function extractWithBedrock(
   input: ExtractionInput,
-  options: ExtractionOptions = {},
+  endpointUrl: string,
+  apiKey: string,
+  modelId: string,
 ): Promise<FloorPlanModel> {
-  const endpointUrl =
-    options.endpointUrl ??
-    process.env.BEDROCK_MANTLE_ENDPOINT ??
-    'https://bedrock-mantle.ap-south-1.api.aws/v1/chat/completions';
-
-  const apiKey =
-    options.apiKey ??
-    process.env.BEDROCK_MANTLE_API_KEY;
-
-  if (!apiKey) {
-    throw new Error(
-      'Bedrock Mantle API key is required. Pass options.apiKey or set BEDROCK_MANTLE_API_KEY environment variable.',
-    );
-  }
-
-  const modelId =
-    options.modelId ??
-    process.env.BEDROCK_MANTLE_MODEL_ID ??
-    'qwen.qwen3-vl-235b-a22b-instruct';
-
   const base64Image = input.imageBytes.toString('base64');
   const userInstructions = buildAdditionalUserInstructions(input);
 
-  // Build OpenAI-compatible chat completions payload.
-  // Image is sent as a data URI in an image_url content block.
-  // max_tokens=32000: floor-plan JSON with 8+ rooms, walls, openings can easily
-  // reach 40 000+ characters; 16 000 was causing mid-JSON truncation.
   const requestPayload = {
     model: modelId,
     max_tokens: 32000,
@@ -621,7 +769,6 @@ export async function extractFloorPlanGeometry(
 
   const rawResponse = await sendMantleRequest(endpointUrl, apiKey, requestPayload);
 
-  // Parse OpenAI-format response: choices[0].message.content
   let mantleResult: {
     choices?: { finish_reason?: string; message?: { content?: string } }[];
     error?: { type: string; message: string };
@@ -646,57 +793,93 @@ export async function extractFloorPlanGeometry(
     );
   }
 
-  const finishReason = choice?.finish_reason ?? 'unknown';
-  if (finishReason === 'length') {
+  if (choice?.finish_reason === 'length') {
     console.warn(
-      `[geometry-extraction] WARNING: model response was truncated (finish_reason=length). ` +
-      `The JSON will be repaired automatically but some data at the end may be missing. ` +
-      `Consider increasing max_tokens or simplifying the schema.`,
+      `[geometry-extraction] WARNING: Bedrock model response was truncated (finish_reason=length).`,
     );
   }
 
-  const cleaned = stripMarkdown(messageContent);
-
-  let rawModel: FloorPlanModel;
-
-  // First attempt: parse as-is
-  const firstParseResult = (() => {
-    try { return { ok: true as const, val: JSON.parse(cleaned) as FloorPlanModel }; }
-    catch (e) { return { ok: false as const, err: e as Error }; }
-  })();
-
-  if (firstParseResult.ok) {
-    rawModel = firstParseResult.val;
-  } else {
-    // Second attempt: repair truncation then parse
-    console.warn(
-      `[geometry-extraction] JSON parse failed (${firstParseResult.err.message}). ` +
-      `Attempting truncation repair…`,
-    );
-    const repaired = repairTruncatedJson(cleaned);
-    try {
-      rawModel = JSON.parse(repaired) as FloorPlanModel;
-      console.warn(`[geometry-extraction] Truncation repair succeeded.`);
-      // Record as a validation warning so callers know
-      if (!rawModel.validationWarnings) rawModel.validationWarnings = [];
-      rawModel.validationWarnings.push({
-        severity: 'warning',
-        code: 'RESPONSE_TRUNCATED',
-        message:
-          `Model response was truncated at ${cleaned.length} characters and was automatically ` +
-          `repaired. Data near the end of the response (walls, openings, annotations) may be ` +
-          `incomplete. Re-run with a higher max_tokens budget if needed.`,
-      });
-    } catch (repairErr) {
-      throw new Error(
-        `Mantle output could not be parsed as FloorPlanModel JSON even after truncation repair.\n` +
-        `Original parse error: ${firstParseResult.err.message}\n` +
-        `Repair parse error: ${(repairErr as Error).message}\n` +
-        `Raw output (first 500 chars): ${cleaned.slice(0, 500)}`,
-      );
-    }
-  }
-
+  const { model: rawModel } = parseModelJson(messageContent);
   applyOverrides(rawModel, input);
   return postProcessModel(rawModel, input.sourceName, modelId);
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Public API
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Extract a structured FloorPlanModel from a floor-plan image.
+ * Uses native Gemini API by default with automatic fallback to Bedrock Mantle.
+ */
+export async function extractFloorPlanGeometry(
+  input: ExtractionInput,
+  options: ExtractionOptions = {},
+): Promise<FloorPlanModel> {
+  const geminiApiKey =
+    options.geminiApiKey ??
+    process.env.GEMINI_API_KEY;
+
+  const geminiModel =
+    options.geminiModel ??
+    process.env.GEMINI_MODEL ??
+    'gemini-2.5-flash';
+
+  const bedrockEndpoint =
+    options.endpointUrl ??
+    process.env.BEDROCK_MANTLE_ENDPOINT ??
+    'https://bedrock-mantle.ap-south-1.api.aws/v1/chat/completions';
+
+  const bedrockApiKey =
+    options.apiKey ??
+    process.env.BEDROCK_MANTLE_API_KEY;
+
+  const bedrockModelId =
+    options.modelId ??
+    process.env.BEDROCK_MANTLE_MODEL_ID ??
+    'qwen.qwen3-vl-235b-a22b-instruct';
+
+  const preferredProvider =
+    options.primaryProvider ??
+    (geminiApiKey ? 'gemini' : 'bedrock');
+
+  // Strategy 1: Attempt Gemini first if configured/preferred
+  if (preferredProvider === 'gemini') {
+    if (geminiApiKey) {
+      try {
+        console.log(`[geometry-extraction] Attempting primary provider: Gemini (${geminiModel})…`);
+        return await extractWithGemini(input, geminiApiKey, geminiModel);
+      } catch (geminiErr) {
+        console.warn(`[geometry-extraction] Gemini provider failed: ${(geminiErr as Error).message}`);
+        console.warn(`[geometry-extraction] Falling back to Bedrock Mantle (${bedrockModelId})…`);
+      }
+    } else {
+      console.warn(`[geometry-extraction] Gemini requested as primary but GEMINI_API_KEY is not set. Falling back to Bedrock.`);
+    }
+
+    // Fallback to Bedrock
+    if (!bedrockApiKey) {
+      throw new Error(
+        'Both Gemini and Bedrock failed or lack credentials. Please set GEMINI_API_KEY or BEDROCK_MANTLE_API_KEY.',
+      );
+    }
+    return await extractWithBedrock(input, bedrockEndpoint, bedrockApiKey, bedrockModelId);
+  }
+
+  // Strategy 2: Bedrock preferred
+  try {
+    if (!bedrockApiKey) {
+      throw new Error('BEDROCK_MANTLE_API_KEY is not set.');
+    }
+    console.log(`[geometry-extraction] Attempting primary provider: Bedrock Mantle (${bedrockModelId})…`);
+    return await extractWithBedrock(input, bedrockEndpoint, bedrockApiKey, bedrockModelId);
+  } catch (bedrockErr) {
+    console.warn(`[geometry-extraction] Bedrock provider failed: ${(bedrockErr as Error).message}`);
+    if (geminiApiKey) {
+      console.warn(`[geometry-extraction] Falling back to Gemini (${geminiModel})…`);
+      return await extractWithGemini(input, geminiApiKey, geminiModel);
+    }
+    throw bedrockErr;
+  }
+}
+

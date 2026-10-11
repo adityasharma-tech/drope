@@ -4,8 +4,8 @@
     "source": "floor_plan.png",
     "widthPixels": 1200,
     "heightPixels": 800,
-    "analyzedAt": "2026-10-11T09:15:08.752Z",
-    "modelId": "qwen.qwen3-vl-235b-a22b-instruct"
+    "analyzedAt": "2026-10-11T10:19:13.860Z",
+    "modelId": "gemini-2.5-flash"
   },
   "buildingMetadata": {
     "title": "FLOOR PLAN",
@@ -25,57 +25,3061 @@
       "rawAnnotation": "30'"
     },
     "totalAreaReal": {
-      "value": 1200,
-      "unit": "ft²",
-      "source": "calculated"
+      "value": 1080,
+      "unit": "sqft",
+      "source": "inferred"
     }
   },
   "scale": {
-    "pixelLength": 1200,
+    "pixelLength": 20,
     "realLength": {
-      "value": 40,
+      "value": 1,
       "unit": "ft",
-      "source": "annotated"
+      "source": "inferred"
     },
-    "pixelsPerUnit": 30,
-    "source": "calibrated",
-    "confidence": "high"
+    "pixelsPerUnit": 20,
+    "source": "inferred",
+    "confidence": "low"
   },
   "orientation": {
-    "northAngleDeg": 0,
+    "northAngleDeg": null,
     "northAngleSource": "unknown",
-    "entranceFacing": "south",
-    "confidence": "medium"
+    "entranceFacing": "unknown",
+    "confidence": "unknown"
   },
   "buildingFootprint": {
     "points": [
       {
-        "x": 240,
-        "y": 160
+        "x": 200,
+        "y": 150
       },
       {
         "x": 1000,
-        "y": 160
+        "y": 150
       },
       {
         "x": 1000,
-        "y": 640
+        "y": 650
       },
       {
-        "x": 240,
-        "y": 640
+        "x": 200,
+        "y": 650
       }
     ]
   },
-  "rooms": [],
-  "walls": [],
-  "openings": [],
-  "annotations": [],
-  "adjacencyGraph": {},
-  "connectivityGraph": {},
-  "exteriorExposedRoomIds": [],
+  "rooms": [
+    {
+      "id": "R1",
+      "label": "BEDROOM #2",
+      "type": "Bedroom",
+      "typeSource": "annotated",
+      "boundary": {
+        "points": [
+          {
+            "x": 230,
+            "y": 180
+          },
+          {
+            "x": 410,
+            "y": 180
+          },
+          {
+            "x": 410,
+            "y": 300
+          },
+          {
+            "x": 230,
+            "y": 300
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 230,
+        "y": 180,
+        "width": 180,
+        "height": 120
+      },
+      "areaReal": {
+        "value": 108,
+        "unit": "sqft",
+        "source": "annotated"
+      },
+      "areaPixels": 21600,
+      "perimeterPixels": 600,
+      "annotatedWidth": {
+        "value": 9,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "9'-0\""
+      },
+      "annotatedDepth": {
+        "value": 12,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "12'-0\""
+      },
+      "wallIds": [
+        "W1_R1",
+        "W4_R1",
+        "W5_R1",
+        "W6_R1"
+      ],
+      "openingIds": [
+        "O1"
+      ],
+      "adjacentRoomIds": [
+        "R10"
+      ],
+      "connectedRoomIds": [
+        "R10"
+      ],
+      "isExteriorExposed": true,
+      "exteriorWallIds": [
+        "W1_R1",
+        "W4_R1"
+      ],
+      "fixtures": [
+        {
+          "id": "F1_R1",
+          "category": "Bed",
+          "label": "Bed",
+          "boundingBox": {
+            "x": 290,
+            "y": 200,
+            "width": 100,
+            "height": 80
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F2_R1",
+          "category": "Nightstand",
+          "label": "Nightstand",
+          "boundingBox": {
+            "x": 240,
+            "y": 200,
+            "width": 30,
+            "height": 30
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F3_R1",
+          "category": "Nightstand",
+          "label": "Nightstand",
+          "boundingBox": {
+            "x": 370,
+            "y": 200,
+            "width": 30,
+            "height": 30
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        }
+      ],
+      "confidence": "high",
+      "validationWarnings": []
+    },
+    {
+      "id": "R2",
+      "label": "BEDROOM #3",
+      "type": "Bedroom",
+      "typeSource": "annotated",
+      "boundary": {
+        "points": [
+          {
+            "x": 500,
+            "y": 180
+          },
+          {
+            "x": 680,
+            "y": 180
+          },
+          {
+            "x": 680,
+            "y": 300
+          },
+          {
+            "x": 500,
+            "y": 300
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 500,
+        "y": 180,
+        "width": 180,
+        "height": 120
+      },
+      "areaReal": {
+        "value": 108,
+        "unit": "sqft",
+        "source": "annotated"
+      },
+      "areaPixels": 21600,
+      "perimeterPixels": 600,
+      "annotatedWidth": {
+        "value": 9,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "9'-0\""
+      },
+      "annotatedDepth": {
+        "value": 12,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "12'-0\""
+      },
+      "wallIds": [
+        "W1_R2",
+        "W6_R2",
+        "W7_R2",
+        "W8_R2"
+      ],
+      "openingIds": [
+        "O2"
+      ],
+      "adjacentRoomIds": [
+        "R10"
+      ],
+      "connectedRoomIds": [
+        "R10"
+      ],
+      "isExteriorExposed": true,
+      "exteriorWallIds": [
+        "W1_R2"
+      ],
+      "fixtures": [
+        {
+          "id": "F1_R2",
+          "category": "Bed",
+          "label": "Bed",
+          "boundingBox": {
+            "x": 590,
+            "y": 200,
+            "width": 100,
+            "height": 80
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F2_R2",
+          "category": "Nightstand",
+          "label": "Nightstand",
+          "boundingBox": {
+            "x": 540,
+            "y": 200,
+            "width": 30,
+            "height": 30
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F3_R2",
+          "category": "Nightstand",
+          "label": "Nightstand",
+          "boundingBox": {
+            "x": 650,
+            "y": 200,
+            "width": 30,
+            "height": 30
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        }
+      ],
+      "confidence": "high",
+      "validationWarnings": []
+    },
+    {
+      "id": "R3",
+      "label": "BATHROOM",
+      "type": "Bathroom",
+      "typeSource": "inferred",
+      "boundary": {
+        "points": [
+          {
+            "x": 710,
+            "y": 180
+          },
+          {
+            "x": 770,
+            "y": 180
+          },
+          {
+            "x": 770,
+            "y": 300
+          },
+          {
+            "x": 710,
+            "y": 300
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 710,
+        "y": 180,
+        "width": 60,
+        "height": 120
+      },
+      "areaReal": {
+        "value": 21.6,
+        "unit": "sqft",
+        "source": "inferred"
+      },
+      "areaPixels": 7200,
+      "perimeterPixels": 360,
+      "annotatedWidth": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown",
+        "rawAnnotation": null
+      },
+      "annotatedDepth": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown",
+        "rawAnnotation": null
+      },
+      "wallIds": [
+        "W1_R3",
+        "W7_R3",
+        "W8_R3",
+        "W9_R3"
+      ],
+      "openingIds": [
+        "O3"
+      ],
+      "adjacentRoomIds": [
+        "R10"
+      ],
+      "connectedRoomIds": [
+        "R10"
+      ],
+      "isExteriorExposed": true,
+      "exteriorWallIds": [
+        "W1_R3"
+      ],
+      "fixtures": [
+        {
+          "id": "F1_R3",
+          "category": "Bathtub",
+          "label": "Bathtub",
+          "boundingBox": {
+            "x": 710,
+            "y": 180,
+            "width": 60,
+            "height": 120
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F2_R3",
+          "category": "Toilet",
+          "label": "Toilet",
+          "boundingBox": {
+            "x": 720,
+            "y": 230,
+            "width": 40,
+            "height": 40
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F3_R3",
+          "category": "Sink",
+          "label": "Sink",
+          "boundingBox": {
+            "x": 720,
+            "y": 280,
+            "width": 40,
+            "height": 20
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        }
+      ],
+      "confidence": "high",
+      "validationWarnings": []
+    },
+    {
+      "id": "R4",
+      "label": "MASTER BEDROOM",
+      "type": "Bedroom",
+      "typeSource": "annotated",
+      "boundary": {
+        "points": [
+          {
+            "x": 800,
+            "y": 180
+          },
+          {
+            "x": 970,
+            "y": 180
+          },
+          {
+            "x": 970,
+            "y": 300
+          },
+          {
+            "x": 800,
+            "y": 300
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 800,
+        "y": 180,
+        "width": 170,
+        "height": 120
+      },
+      "areaReal": {
+        "value": 152.04,
+        "unit": "sqft",
+        "source": "annotated"
+      },
+      "areaPixels": 20400,
+      "perimeterPixels": 580,
+      "annotatedWidth": {
+        "value": 12.67,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "12'-8\""
+      },
+      "annotatedDepth": {
+        "value": 12,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "12'-0\""
+      },
+      "wallIds": [
+        "W1_R4",
+        "W2_R4",
+        "W9_R4",
+        "W10_R4"
+      ],
+      "openingIds": [
+        "O4"
+      ],
+      "adjacentRoomIds": [
+        "R10"
+      ],
+      "connectedRoomIds": [
+        "R10"
+      ],
+      "isExteriorExposed": true,
+      "exteriorWallIds": [
+        "W1_R4",
+        "W2_R4"
+      ],
+      "fixtures": [
+        {
+          "id": "F1_R4",
+          "category": "Bed",
+          "label": "Bed",
+          "boundingBox": {
+            "x": 870,
+            "y": 200,
+            "width": 100,
+            "height": 80
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F2_R4",
+          "category": "Nightstand",
+          "label": "Nightstand",
+          "boundingBox": {
+            "x": 810,
+            "y": 200,
+            "width": 30,
+            "height": 30
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F3_R4",
+          "category": "Nightstand",
+          "label": "Nightstand",
+          "boundingBox": {
+            "x": 940,
+            "y": 200,
+            "width": 30,
+            "height": 30
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        }
+      ],
+      "confidence": "high",
+      "validationWarnings": []
+    },
+    {
+      "id": "R5",
+      "label": "FAMILY ROOM",
+      "type": "Living Room",
+      "typeSource": "annotated",
+      "boundary": {
+        "points": [
+          {
+            "x": 230,
+            "y": 380
+          },
+          {
+            "x": 500,
+            "y": 380
+          },
+          {
+            "x": 500,
+            "y": 620
+          },
+          {
+            "x": 230,
+            "y": 620
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 230,
+        "y": 380,
+        "width": 270,
+        "height": 240
+      },
+      "areaReal": {
+        "value": 244.95,
+        "unit": "sqft",
+        "source": "annotated"
+      },
+      "areaPixels": 64800,
+      "perimeterPixels": 1020,
+      "annotatedWidth": {
+        "value": 15,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "15'-0\""
+      },
+      "annotatedDepth": {
+        "value": 16.33,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "16'-4\""
+      },
+      "wallIds": [
+        "W4_R5",
+        "W5_R5",
+        "W11_R5",
+        "W12_R5"
+      ],
+      "openingIds": [
+        "O7"
+      ],
+      "adjacentRoomIds": [
+        "R6",
+        "R10"
+      ],
+      "connectedRoomIds": [
+        "R6",
+        "R10"
+      ],
+      "isExteriorExposed": true,
+      "exteriorWallIds": [
+        "W4_R5",
+        "W5_R5"
+      ],
+      "fixtures": [
+        {
+          "id": "F1_R5",
+          "category": "Sofa",
+          "label": "Sofa",
+          "boundingBox": {
+            "x": 240,
+            "y": 390,
+            "width": 60,
+            "height": 150
+          },
+          "orientation": 90,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F2_R5",
+          "category": "Armchair",
+          "label": "Armchair",
+          "boundingBox": {
+            "x": 350,
+            "y": 560,
+            "width": 50,
+            "height": 50
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F3_R5",
+          "category": "Armchair",
+          "label": "Armchair",
+          "boundingBox": {
+            "x": 420,
+            "y": 560,
+            "width": 50,
+            "height": 50
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        }
+      ],
+      "confidence": "high",
+      "validationWarnings": []
+    },
+    {
+      "id": "R6",
+      "label": "DINNING AREA",
+      "type": "Dining Room",
+      "typeSource": "annotated",
+      "boundary": {
+        "points": [
+          {
+            "x": 500,
+            "y": 380
+          },
+          {
+            "x": 710,
+            "y": 380
+          },
+          {
+            "x": 710,
+            "y": 620
+          },
+          {
+            "x": 500,
+            "y": 620
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 500,
+        "y": 380,
+        "width": 210,
+        "height": 240
+      },
+      "areaReal": {
+        "value": 146.97,
+        "unit": "sqft",
+        "source": "annotated"
+      },
+      "areaPixels": 50400,
+      "perimeterPixels": 900,
+      "annotatedWidth": {
+        "value": 9,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "9'-0\""
+      },
+      "annotatedDepth": {
+        "value": 16.33,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "16'-4\""
+      },
+      "wallIds": [
+        "W5_R6",
+        "W11_R6",
+        "W12_R6",
+        "W13_R6"
+      ],
+      "openingIds": [
+        "O7",
+        "O8"
+      ],
+      "adjacentRoomIds": [
+        "R5",
+        "R7",
+        "R10"
+      ],
+      "connectedRoomIds": [
+        "R5",
+        "R7",
+        "R10"
+      ],
+      "isExteriorExposed": true,
+      "exteriorWallIds": [
+        "W5_R6"
+      ],
+      "fixtures": [],
+      "confidence": "high",
+      "validationWarnings": []
+    },
+    {
+      "id": "R7",
+      "label": "KITCHEN",
+      "type": "Kitchen",
+      "typeSource": "annotated",
+      "boundary": {
+        "points": [
+          {
+            "x": 710,
+            "y": 380
+          },
+          {
+            "x": 800,
+            "y": 380
+          },
+          {
+            "x": 800,
+            "y": 620
+          },
+          {
+            "x": 710,
+            "y": 620
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 710,
+        "y": 380,
+        "width": 90,
+        "height": 240
+      },
+      "areaReal": {
+        "value": 138.805,
+        "unit": "sqft",
+        "source": "annotated"
+      },
+      "areaPixels": 21600,
+      "perimeterPixels": 660,
+      "annotatedWidth": {
+        "value": 8.5,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "8'-6\""
+      },
+      "annotatedDepth": {
+        "value": 16.33,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "16'-4\""
+      },
+      "wallIds": [
+        "W5_R7",
+        "W13_R7",
+        "W14_R7",
+        "W15_R7"
+      ],
+      "openingIds": [
+        "O8"
+      ],
+      "adjacentRoomIds": [
+        "R6",
+        "R8",
+        "R9",
+        "R10"
+      ],
+      "connectedRoomIds": [
+        "R6",
+        "R10"
+      ],
+      "isExteriorExposed": true,
+      "exteriorWallIds": [
+        "W5_R7"
+      ],
+      "fixtures": [
+        {
+          "id": "F1_R7",
+          "category": "Island",
+          "label": "Island",
+          "boundingBox": {
+            "x": 740,
+            "y": 450,
+            "width": 30,
+            "height": 80
+          },
+          "orientation": 90,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F2_R7",
+          "category": "Stove",
+          "label": "Stove",
+          "boundingBox": {
+            "x": 800,
+            "y": 450,
+            "width": 30,
+            "height": 60
+          },
+          "orientation": 90,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F3_R7",
+          "category": "Sink",
+          "label": "Sink",
+          "boundingBox": {
+            "x": 740,
+            "y": 590,
+            "width": 40,
+            "height": 20
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        }
+      ],
+      "confidence": "high",
+      "validationWarnings": []
+    },
+    {
+      "id": "R8",
+      "label": "CLOSET",
+      "type": "Closet",
+      "typeSource": "annotated",
+      "boundary": {
+        "points": [
+          {
+            "x": 800,
+            "y": 380
+          },
+          {
+            "x": 940,
+            "y": 380
+          },
+          {
+            "x": 940,
+            "y": 450
+          },
+          {
+            "x": 800,
+            "y": 450
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 800,
+        "y": 380,
+        "width": 140,
+        "height": 70
+      },
+      "areaReal": {
+        "value": 42,
+        "unit": "sqft",
+        "source": "annotated"
+      },
+      "areaPixels": 9800,
+      "perimeterPixels": 420,
+      "annotatedWidth": {
+        "value": 6,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "6'-0\""
+      },
+      "annotatedDepth": {
+        "value": 7,
+        "unit": "ft",
+        "source": "annotated",
+        "rawAnnotation": "7'-0\""
+      },
+      "wallIds": [
+        "W10_R8",
+        "W14_R8",
+        "W15_R8",
+        "W16_R8"
+      ],
+      "openingIds": [
+        "O5"
+      ],
+      "adjacentRoomIds": [
+        "R7",
+        "R9",
+        "R10"
+      ],
+      "connectedRoomIds": [
+        "R10"
+      ],
+      "isExteriorExposed": false,
+      "exteriorWallIds": [],
+      "fixtures": [],
+      "confidence": "high",
+      "validationWarnings": []
+    },
+    {
+      "id": "R9",
+      "label": "WASHROOM",
+      "type": "Laundry Room",
+      "typeSource": "inferred",
+      "boundary": {
+        "points": [
+          {
+            "x": 800,
+            "y": 480
+          },
+          {
+            "x": 970,
+            "y": 480
+          },
+          {
+            "x": 970,
+            "y": 620
+          },
+          {
+            "x": 800,
+            "y": 620
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 800,
+        "y": 480,
+        "width": 170,
+        "height": 140
+      },
+      "areaReal": {
+        "value": 71.4,
+        "unit": "sqft",
+        "source": "inferred"
+      },
+      "areaPixels": 23800,
+      "perimeterPixels": 620,
+      "annotatedWidth": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown",
+        "rawAnnotation": null
+      },
+      "annotatedDepth": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown",
+        "rawAnnotation": null
+      },
+      "wallIds": [
+        "W2_R9",
+        "W3_R9",
+        "W15_R9",
+        "W16_R9"
+      ],
+      "openingIds": [
+        "O6"
+      ],
+      "adjacentRoomIds": [
+        "R7",
+        "R8",
+        "R10"
+      ],
+      "connectedRoomIds": [
+        "R10"
+      ],
+      "isExteriorExposed": true,
+      "exteriorWallIds": [
+        "W2_R9",
+        "W3_R9"
+      ],
+      "fixtures": [
+        {
+          "id": "F1_R9",
+          "category": "Washer",
+          "label": "W",
+          "boundingBox": {
+            "x": 840,
+            "y": 520,
+            "width": 40,
+            "height": 40
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F2_R9",
+          "category": "Dryer",
+          "label": "D",
+          "boundingBox": {
+            "x": 890,
+            "y": 520,
+            "width": 40,
+            "height": 40
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        },
+        {
+          "id": "F3_R9",
+          "category": "Sink",
+          "label": "Sink",
+          "boundingBox": {
+            "x": 840,
+            "y": 590,
+            "width": 40,
+            "height": 20
+          },
+          "orientation": 0,
+          "confidence": "high",
+          "source": "detected"
+        }
+      ],
+      "confidence": "high",
+      "validationWarnings": []
+    },
+    {
+      "id": "R10",
+      "label": "Corridor",
+      "type": "Corridor",
+      "typeSource": "inferred",
+      "boundary": {
+        "points": [
+          {
+            "x": 230,
+            "y": 180
+          },
+          {
+            "x": 410,
+            "y": 180
+          },
+          {
+            "x": 410,
+            "y": 300
+          },
+          {
+            "x": 500,
+            "y": 300
+          },
+          {
+            "x": 500,
+            "y": 180
+          },
+          {
+            "x": 680,
+            "y": 180
+          },
+          {
+            "x": 680,
+            "y": 300
+          },
+          {
+            "x": 710,
+            "y": 300
+          },
+          {
+            "x": 710,
+            "y": 180
+          },
+          {
+            "x": 770,
+            "y": 180
+          },
+          {
+            "x": 770,
+            "y": 300
+          },
+          {
+            "x": 800,
+            "y": 300
+          },
+          {
+            "x": 800,
+            "y": 180
+          },
+          {
+            "x": 970,
+            "y": 180
+          },
+          {
+            "x": 970,
+            "y": 300
+          },
+          {
+            "x": 970,
+            "y": 480
+          },
+          {
+            "x": 800,
+            "y": 480
+          },
+          {
+            "x": 800,
+            "y": 450
+          },
+          {
+            "x": 940,
+            "y": 450
+          },
+          {
+            "x": 940,
+            "y": 380
+          },
+          {
+            "x": 800,
+            "y": 380
+          },
+          {
+            "x": 710,
+            "y": 380
+          },
+          {
+            "x": 500,
+            "y": 380
+          },
+          {
+            "x": 230,
+            "y": 380
+          },
+          {
+            "x": 230,
+            "y": 300
+          }
+        ]
+      },
+      "boundingBox": {
+        "x": 230,
+        "y": 180,
+        "width": 740,
+        "height": 440
+      },
+      "areaReal": {
+        "value": 253.3,
+        "unit": "sqft",
+        "source": "inferred"
+      },
+      "areaPixels": 84400,
+      "perimeterPixels": 2560,
+      "annotatedWidth": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown",
+        "rawAnnotation": null
+      },
+      "annotatedDepth": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown",
+        "rawAnnotation": null
+      },
+      "wallIds": [
+        "W1_R1",
+        "W4_R1",
+        "W6_R1",
+        "W1_R2",
+        "W6_R2",
+        "W7_R2",
+        "W8_R2",
+        "W1_R3",
+        "W7_R3",
+        "W8_R3",
+        "W9_R3",
+        "W1_R4",
+        "W2_R4",
+        "W9_R4",
+        "W10_R4",
+        "W4_R5",
+        "W5_R5",
+        "W11_R5",
+        "W12_R5",
+        "W5_R6",
+        "W11_R6",
+        "W12_R6",
+        "W13_R6",
+        "W5_R7",
+        "W13_R7",
+        "W14_R7",
+        "W15_R7",
+        "W10_R8",
+        "W14_R8",
+        "W15_R8",
+        "W16_R8",
+        "W2_R9",
+        "W3_R9",
+        "W15_R9",
+        "W16_R9"
+      ],
+      "openingIds": [
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "O5",
+        "O6",
+        "O7",
+        "O8"
+      ],
+      "adjacentRoomIds": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "R9"
+      ],
+      "connectedRoomIds": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "R9"
+      ],
+      "isExteriorExposed": false,
+      "exteriorWallIds": [],
+      "fixtures": [],
+      "confidence": "high",
+      "validationWarnings": []
+    }
+  ],
+  "walls": [
+    {
+      "id": "W1_R1",
+      "startPoint": {
+        "x": 200,
+        "y": 150
+      },
+      "endPoint": {
+        "x": 440,
+        "y": 150
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 12,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R1"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W1_R2",
+      "startPoint": {
+        "x": 470,
+        "y": 150
+      },
+      "endPoint": {
+        "x": 700,
+        "y": 150
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 11.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R2"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W1_R3",
+      "startPoint": {
+        "x": 700,
+        "y": 150
+      },
+      "endPoint": {
+        "x": 790,
+        "y": 150
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 4.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R3"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W1_R4",
+      "startPoint": {
+        "x": 790,
+        "y": 150
+      },
+      "endPoint": {
+        "x": 1000,
+        "y": 150
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 10.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R4"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W2_R4",
+      "startPoint": {
+        "x": 1000,
+        "y": 150
+      },
+      "endPoint": {
+        "x": 1000,
+        "y": 350
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 10,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R4"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W2_R9",
+      "startPoint": {
+        "x": 1000,
+        "y": 470
+      },
+      "endPoint": {
+        "x": 1000,
+        "y": 650
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 9,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R9"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W3_R5",
+      "startPoint": {
+        "x": 200,
+        "y": 650
+      },
+      "endPoint": {
+        "x": 500,
+        "y": 650
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 15,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R5"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W3_R6",
+      "startPoint": {
+        "x": 500,
+        "y": 650
+      },
+      "endPoint": {
+        "x": 710,
+        "y": 650
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 10.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R6"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W3_R7",
+      "startPoint": {
+        "x": 710,
+        "y": 650
+      },
+      "endPoint": {
+        "x": 800,
+        "y": 650
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 4.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R7"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W3_R9",
+      "startPoint": {
+        "x": 800,
+        "y": 650
+      },
+      "endPoint": {
+        "x": 1000,
+        "y": 650
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 10,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R9"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W4_R1",
+      "startPoint": {
+        "x": 200,
+        "y": 150
+      },
+      "endPoint": {
+        "x": 200,
+        "y": 350
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 10,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R1"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W4_R5",
+      "startPoint": {
+        "x": 200,
+        "y": 350
+      },
+      "endPoint": {
+        "x": 200,
+        "y": 650
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 15,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R5"
+      ],
+      "isExterior": true,
+      "isExteriorSource": "detected",
+      "isLoadBearing": true,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W5_R1",
+      "startPoint": {
+        "x": 410,
+        "y": 180
+      },
+      "endPoint": {
+        "x": 410,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 6,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R1",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W6_R1",
+      "startPoint": {
+        "x": 230,
+        "y": 300
+      },
+      "endPoint": {
+        "x": 410,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 9,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R1",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W6_R2",
+      "startPoint": {
+        "x": 500,
+        "y": 300
+      },
+      "endPoint": {
+        "x": 680,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 9,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R2",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W7_R2",
+      "startPoint": {
+        "x": 500,
+        "y": 180
+      },
+      "endPoint": {
+        "x": 500,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 6,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R2",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W7_R3",
+      "startPoint": {
+        "x": 710,
+        "y": 180
+      },
+      "endPoint": {
+        "x": 710,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 6,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R3",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W8_R2",
+      "startPoint": {
+        "x": 680,
+        "y": 180
+      },
+      "endPoint": {
+        "x": 680,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 6,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R2",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W8_R3",
+      "startPoint": {
+        "x": 770,
+        "y": 180
+      },
+      "endPoint": {
+        "x": 770,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 6,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R3",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W9_R3",
+      "startPoint": {
+        "x": 710,
+        "y": 300
+      },
+      "endPoint": {
+        "x": 770,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 3,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R3",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W9_R4",
+      "startPoint": {
+        "x": 800,
+        "y": 300
+      },
+      "endPoint": {
+        "x": 970,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 8.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R4",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W10_R4",
+      "startPoint": {
+        "x": 800,
+        "y": 180
+      },
+      "endPoint": {
+        "x": 800,
+        "y": 300
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 6,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R4",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W10_R8",
+      "startPoint": {
+        "x": 800,
+        "y": 380
+      },
+      "endPoint": {
+        "x": 940,
+        "y": 380
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 7,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R8",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W11_R5",
+      "startPoint": {
+        "x": 230,
+        "y": 380
+      },
+      "endPoint": {
+        "x": 500,
+        "y": 380
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 13.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R5",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W11_R6",
+      "startPoint": {
+        "x": 500,
+        "y": 380
+      },
+      "endPoint": {
+        "x": 710,
+        "y": 380
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 10.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R6",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W12_R5",
+      "startPoint": {
+        "x": 500,
+        "y": 380
+      },
+      "endPoint": {
+        "x": 500,
+        "y": 620
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 12,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R5",
+        "R6"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W12_R6",
+      "startPoint": {
+        "x": 500,
+        "y": 620
+      },
+      "endPoint": {
+        "x": 500,
+        "y": 650
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 1.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R5",
+        "R6"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W13_R6",
+      "startPoint": {
+        "x": 710,
+        "y": 380
+      },
+      "endPoint": {
+        "x": 710,
+        "y": 620
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 12,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R6",
+        "R7"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W13_R7",
+      "startPoint": {
+        "x": 710,
+        "y": 620
+      },
+      "endPoint": {
+        "x": 710,
+        "y": 650
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 1.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R6",
+        "R7"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W14_R7",
+      "startPoint": {
+        "x": 710,
+        "y": 380
+      },
+      "endPoint": {
+        "x": 800,
+        "y": 380
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 4.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R7",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W14_R8",
+      "startPoint": {
+        "x": 940,
+        "y": 380
+      },
+      "endPoint": {
+        "x": 940,
+        "y": 450
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 3.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R8",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W15_R7",
+      "startPoint": {
+        "x": 800,
+        "y": 380
+      },
+      "endPoint": {
+        "x": 800,
+        "y": 450
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 3.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R7",
+        "R8"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W15_R8",
+      "startPoint": {
+        "x": 800,
+        "y": 450
+      },
+      "endPoint": {
+        "x": 940,
+        "y": 450
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 7,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R8",
+        "R9"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W15_R9",
+      "startPoint": {
+        "x": 800,
+        "y": 480
+      },
+      "endPoint": {
+        "x": 970,
+        "y": 480
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 8.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "horizontal",
+      "boundingRoomIds": [
+        "R9",
+        "R10"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W16_R8",
+      "startPoint": {
+        "x": 800,
+        "y": 450
+      },
+      "endPoint": {
+        "x": 800,
+        "y": 480
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 1.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R8",
+        "R9"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    },
+    {
+      "id": "W16_R9",
+      "startPoint": {
+        "x": 800,
+        "y": 480
+      },
+      "endPoint": {
+        "x": 800,
+        "y": 620
+      },
+      "thicknessPixels": 30,
+      "thicknessReal": {
+        "value": 0.5,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "lengthReal": {
+        "value": 7,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "orientation": "vertical",
+      "boundingRoomIds": [
+        "R9",
+        "R7"
+      ],
+      "isExterior": false,
+      "isExteriorSource": "inferred",
+      "isLoadBearing": false,
+      "isLoadBearingSource": "inferred",
+      "confidence": "high"
+    }
+  ],
+  "openings": [
+    {
+      "id": "O1",
+      "type": "Door",
+      "wallId": "W5_R1",
+      "positionOnWall": {
+        "x": 410,
+        "y": 250
+      },
+      "widthReal": {
+        "value": 3,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "heightReal": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown"
+      },
+      "widthPixels": 60,
+      "hingePoint": {
+        "x": 410,
+        "y": 220
+      },
+      "swingEndPoint": {
+        "x": 440,
+        "y": 250
+      },
+      "swingDirection": "right",
+      "connectsSpaceIds": [
+        "R1",
+        "R10"
+      ],
+      "isExterior": false,
+      "confidence": "high",
+      "source": "detected"
+    },
+    {
+      "id": "O2",
+      "type": "Door",
+      "wallId": "W7_R2",
+      "positionOnWall": {
+        "x": 500,
+        "y": 250
+      },
+      "widthReal": {
+        "value": 3,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "heightReal": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown"
+      },
+      "widthPixels": 60,
+      "hingePoint": {
+        "x": 500,
+        "y": 220
+      },
+      "swingEndPoint": {
+        "x": 470,
+        "y": 250
+      },
+      "swingDirection": "left",
+      "connectsSpaceIds": [
+        "R2",
+        "R10"
+      ],
+      "isExterior": false,
+      "confidence": "high",
+      "source": "detected"
+    },
+    {
+      "id": "O3",
+      "type": "Door",
+      "wallId": "W7_R3",
+      "positionOnWall": {
+        "x": 710,
+        "y": 250
+      },
+      "widthReal": {
+        "value": 3,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "heightReal": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown"
+      },
+      "widthPixels": 60,
+      "hingePoint": {
+        "x": 710,
+        "y": 220
+      },
+      "swingEndPoint": {
+        "x": 680,
+        "y": 250
+      },
+      "swingDirection": "left",
+      "connectsSpaceIds": [
+        "R3",
+        "R10"
+      ],
+      "isExterior": false,
+      "confidence": "high",
+      "source": "detected"
+    },
+    {
+      "id": "O4",
+      "type": "Door",
+      "wallId": "W10_R4",
+      "positionOnWall": {
+        "x": 800,
+        "y": 250
+      },
+      "widthReal": {
+        "value": 3,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "heightReal": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown"
+      },
+      "widthPixels": 60,
+      "hingePoint": {
+        "x": 800,
+        "y": 220
+      },
+      "swingEndPoint": {
+        "x": 830,
+        "y": 250
+      },
+      "swingDirection": "right",
+      "connectsSpaceIds": [
+        "R4",
+        "R10"
+      ],
+      "isExterior": false,
+      "confidence": "high",
+      "source": "detected"
+    },
+    {
+      "id": "O5",
+      "type": "Door",
+      "wallId": "W15_R7",
+      "positionOnWall": {
+        "x": 800,
+        "y": 415
+      },
+      "widthReal": {
+        "value": 3,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "heightReal": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown"
+      },
+      "widthPixels": 60,
+      "hingePoint": {
+        "x": 800,
+        "y": 385
+      },
+      "swingEndPoint": {
+        "x": 770,
+        "y": 415
+      },
+      "swingDirection": "left",
+      "connectsSpaceIds": [
+        "R8",
+        "R10"
+      ],
+      "isExterior": false,
+      "confidence": "high",
+      "source": "detected"
+    },
+    {
+      "id": "O6",
+      "type": "Door",
+      "wallId": "W16_R9",
+      "positionOnWall": {
+        "x": 800,
+        "y": 550
+      },
+      "widthReal": {
+        "value": 3,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "heightReal": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown"
+      },
+      "widthPixels": 60,
+      "hingePoint": {
+        "x": 800,
+        "y": 520
+      },
+      "swingEndPoint": {
+        "x": 770,
+        "y": 550
+      },
+      "swingDirection": "left",
+      "connectsSpaceIds": [
+        "R9",
+        "R10"
+      ],
+      "isExterior": false,
+      "confidence": "high",
+      "source": "detected"
+    },
+    {
+      "id": "O7",
+      "type": "Opening",
+      "wallId": "W12_R5",
+      "positionOnWall": {
+        "x": 500,
+        "y": 500
+      },
+      "widthReal": {
+        "value": 12,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "heightReal": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown"
+      },
+      "widthPixels": 240,
+      "hingePoint": null,
+      "swingEndPoint": null,
+      "swingDirection": null,
+      "connectsSpaceIds": [
+        "R5",
+        "R6"
+      ],
+      "isExterior": false,
+      "confidence": "high",
+      "source": "detected"
+    },
+    {
+      "id": "O8",
+      "type": "Opening",
+      "wallId": "W13_R6",
+      "positionOnWall": {
+        "x": 710,
+        "y": 500
+      },
+      "widthReal": {
+        "value": 12,
+        "unit": "ft",
+        "source": "inferred"
+      },
+      "heightReal": {
+        "value": null,
+        "unit": "ft",
+        "source": "unknown"
+      },
+      "widthPixels": 240,
+      "hingePoint": null,
+      "swingEndPoint": null,
+      "swingDirection": null,
+      "connectsSpaceIds": [
+        "R6",
+        "R7"
+      ],
+      "isExterior": false,
+      "confidence": "high",
+      "source": "detected"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "A1",
+      "text": "40'",
+      "normalizedText": "40 feet",
+      "type": "Dimension",
+      "position": {
+        "x": 600,
+        "y": 100
+      },
+      "refObjectId": null,
+      "confidence": "high"
+    },
+    {
+      "id": "A2",
+      "text": "30'",
+      "normalizedText": "30 feet",
+      "type": "Dimension",
+      "position": {
+        "x": 150,
+        "y": 400
+      },
+      "refObjectId": null,
+      "confidence": "high"
+    },
+    {
+      "id": "A3",
+      "text": "BEDROOM #2",
+      "normalizedText": "Bedroom 2",
+      "type": "Room Label",
+      "position": {
+        "x": 320,
+        "y": 315
+      },
+      "refObjectId": "R1",
+      "confidence": "high"
+    },
+    {
+      "id": "A4",
+      "text": "9'-0\" x 12'-0\"",
+      "normalizedText": "9 feet 0 inches by 12 feet 0 inches",
+      "type": "Dimension",
+      "position": {
+        "x": 320,
+        "y": 335
+      },
+      "refObjectId": "R1",
+      "confidence": "high"
+    },
+    {
+      "id": "A5",
+      "text": "BEDROOM #3",
+      "normalizedText": "Bedroom 3",
+      "type": "Room Label",
+      "position": {
+        "x": 590,
+        "y": 315
+      },
+      "refObjectId": "R2",
+      "confidence": "high"
+    },
+    {
+      "id": "A6",
+      "text": "9'-0\" x 12'-0\"",
+      "normalizedText": "9 feet 0 inches by 12 feet 0 inches",
+      "type": "Dimension",
+      "position": {
+        "x": 590,
+        "y": 335
+      },
+      "refObjectId": "R2",
+      "confidence": "high"
+    },
+    {
+      "id": "A7",
+      "text": "MASTER BEDROOM",
+      "normalizedText": "Master Bedroom",
+      "type": "Room Label",
+      "position": {
+        "x": 885,
+        "y": 315
+      },
+      "refObjectId": "R4",
+      "confidence": "high"
+    },
+    {
+      "id": "A8",
+      "text": "12'-8\" x 12'-0\"",
+      "normalizedText": "12 feet 8 inches by 12 feet 0 inches",
+      "type": "Dimension",
+      "position": {
+        "x": 885,
+        "y": 335
+      },
+      "refObjectId": "R4",
+      "confidence": "high"
+    },
+    {
+      "id": "A9",
+      "text": "FAMILY ROOM",
+      "normalizedText": "Family Room",
+      "type": "Room Label",
+      "position": {
+        "x": 365,
+        "y": 480
+      },
+      "refObjectId": "R5",
+      "confidence": "high"
+    },
+    {
+      "id": "A10",
+      "text": "15'-0\" x 16'-4\"",
+      "normalizedText": "15 feet 0 inches by 16 feet 4 inches",
+      "type": "Dimension",
+      "position": {
+        "x": 365,
+        "y": 500
+      },
+      "refObjectId": "R5",
+      "confidence": "high"
+    },
+    {
+      "id": "A11",
+      "text": "DINNING AREA",
+      "normalizedText": "Dining Area",
+      "type": "Room Label",
+      "position": {
+        "x": 605,
+        "y": 480
+      },
+      "refObjectId": "R6",
+      "confidence": "high"
+    },
+    {
+      "id": "A12",
+      "text": "9'-0\" x 16'-4\"",
+      "normalizedText": "9 feet 0 inches by 16 feet 4 inches",
+      "type": "Dimension",
+      "position": {
+        "x": 605,
+        "y": 500
+      },
+      "refObjectId": "R6",
+      "confidence": "high"
+    },
+    {
+      "id": "A13",
+      "text": "KITCHEN",
+      "normalizedText": "Kitchen",
+      "type": "Room Label",
+      "position": {
+        "x": 755,
+        "y": 480
+      },
+      "refObjectId": "R7",
+      "confidence": "high"
+    },
+    {
+      "id": "A14",
+      "text": "8'-6\" x 16'-4\"",
+      "normalizedText": "8 feet 6 inches by 16 feet 4 inches",
+      "type": "Dimension",
+      "position": {
+        "x": 755,
+        "y": 500
+      },
+      "refObjectId": "R7",
+      "confidence": "high"
+    },
+    {
+      "id": "A15",
+      "text": "CLOSET",
+      "normalizedText": "Closet",
+      "type": "Room Label",
+      "position": {
+        "x": 870,
+        "y": 400
+      },
+      "refObjectId": "R8",
+      "confidence": "high"
+    },
+    {
+      "id": "A16",
+      "text": "6'-0\" x 7'-0\"",
+      "normalizedText": "6 feet 0 inches by 7 feet 0 inches",
+      "type": "Dimension",
+      "position": {
+        "x": 870,
+        "y": 420
+      },
+      "refObjectId": "R8",
+      "confidence": "high"
+    },
+    {
+      "id": "A17",
+      "text": "WASHROOM",
+      "normalizedText": "Washroom",
+      "type": "Room Label",
+      "position": {
+        "x": 885,
+        "y": 660
+      },
+      "refObjectId": "R9",
+      "confidence": "high"
+    },
+    {
+      "id": "A18",
+      "text": "FLOOR PLAN",
+      "normalizedText": "Floor Plan",
+      "type": "Title",
+      "position": {
+        "x": 600,
+        "y": 870
+      },
+      "refObjectId": null,
+      "confidence": "high"
+    }
+  ],
+  "adjacencyGraph": {
+    "R1": [
+      "R10"
+    ],
+    "R2": [
+      "R10"
+    ],
+    "R3": [
+      "R10"
+    ],
+    "R4": [
+      "R10"
+    ],
+    "R5": [
+      "R6",
+      "R10"
+    ],
+    "R6": [
+      "R5",
+      "R7",
+      "R10"
+    ],
+    "R7": [
+      "R6",
+      "R8",
+      "R9",
+      "R10"
+    ],
+    "R8": [
+      "R7",
+      "R9",
+      "R10"
+    ],
+    "R9": [
+      "R7",
+      "R8",
+      "R10"
+    ],
+    "R10": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9"
+    ]
+  },
+  "connectivityGraph": {
+    "R1": [
+      "R10"
+    ],
+    "R2": [
+      "R10"
+    ],
+    "R3": [
+      "R10"
+    ],
+    "R4": [
+      "R10"
+    ],
+    "R5": [
+      "R6",
+      "R10"
+    ],
+    "R6": [
+      "R5",
+      "R7",
+      "R10"
+    ],
+    "R7": [
+      "R6",
+      "R10"
+    ],
+    "R8": [
+      "R10"
+    ],
+    "R9": [
+      "R10"
+    ],
+    "R10": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9"
+    ]
+  },
+  "exteriorExposedRoomIds": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R9"
+  ],
   "incompleteBoundaryRoomIds": [],
-  "validationWarnings": [],
+  "validationWarnings": [
+    {
+      "severity": "warning",
+      "code": "SCALE_INCONSISTENCY",
+      "message": "The drawing exhibits inconsistent scaling. Horizontal dimensions (e.g., 40' = 800px => 20 px/ft) differ from vertical dimensions (e.g., 30' = 500px => 16.66 px/ft). A primary scale of 20 px/ft is used for `pixelsPerUnit`, but real area calculations for unlabeled rooms use a mixed scale (horizontal for width, vertical for depth).",
+      "objectIds": []
+    },
+    {
+      "severity": "warning",
+      "code": "ROOM_DIMENSION_DISCREPANCY",
+      "message": "Annotated room dimensions do not consistently match drawn pixel dimensions when using a single scale factor. For example, BEDROOM #2 annotated 9'x12' is drawn as 180px x 120px, which corresponds to 9'x6' at 20px/ft. Real area is calculated from annotated dimensions where available, otherwise from pixel dimensions using the mixed scale.",
+      "objectIds": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "R9"
+      ]
+    },
+    {
+      "severity": "warning",
+      "code": "WALL_THICKNESS_DISCREPANCY",
+      "message": "Drawn wall thickness (approx. 30px) implies 1.5ft at 20px/ft, which is unusually thick for standard construction. An inferred real thickness of 0.5ft (6 inches) is used.",
+      "objectIds": []
+    },
+    {
+      "severity": "warning",
+      "code": "DANGLING_WALL_REF",
+      "message": "Room R5 references wall W5_R5 which does not exist in walls[].",
+      "objectIds": [
+        "R5",
+        "W5_R5"
+      ]
+    },
+    {
+      "severity": "warning",
+      "code": "DANGLING_WALL_REF",
+      "message": "Room R6 references wall W5_R6 which does not exist in walls[].",
+      "objectIds": [
+        "R6",
+        "W5_R6"
+      ]
+    },
+    {
+      "severity": "warning",
+      "code": "DANGLING_WALL_REF",
+      "message": "Room R7 references wall W5_R7 which does not exist in walls[].",
+      "objectIds": [
+        "R7",
+        "W5_R7"
+      ]
+    },
+    {
+      "severity": "warning",
+      "code": "DANGLING_WALL_REF",
+      "message": "Room R10 references wall W5_R5 which does not exist in walls[].",
+      "objectIds": [
+        "R10",
+        "W5_R5"
+      ]
+    },
+    {
+      "severity": "warning",
+      "code": "DANGLING_WALL_REF",
+      "message": "Room R10 references wall W5_R6 which does not exist in walls[].",
+      "objectIds": [
+        "R10",
+        "W5_R6"
+      ]
+    },
+    {
+      "severity": "warning",
+      "code": "DANGLING_WALL_REF",
+      "message": "Room R10 references wall W5_R7 which does not exist in walls[].",
+      "objectIds": [
+        "R10",
+        "W5_R7"
+      ]
+    }
+  ],
   "unresolvedAmbiguities": [],
-  "createdAt": "2026-10-11T09:15:08.752Z"
+  "createdAt": "2026-10-11T10:19:13.860Z"
 }
