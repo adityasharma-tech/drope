@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "1.0",
+  "imageMetadata": {
+    "source": "floor_plan.png",
+    "widthPixels": 1200,
+    "heightPixels": 800,
+    "analyzedAt": "2026-10-11T09:15:08.752Z",
+    "modelId": "qwen.qwen3-vl-235b-a22b-instruct"
+  },
+  "buildingMetadata": {
+    "title": "FLOOR PLAN",
+    "floorLevel": "1",
+    "totalFloors": 1,
+    "totalFloorsSource": "inferred",
+    "buildingWidthReal": {
+      "value": 40,
+      "unit": "ft",
+      "source": "annotated",
+      "rawAnnotation": "40'"
+    },
+    "buildingDepthReal": {
+      "value": 30,
+      "unit": "ft",
+      "source": "annotated",
+      "rawAnnotation": "30'"
+    },
+    "totalAreaReal": {
+      "value": 1200,
+      "unit": "ft²",
+      "source": "calculated"
+    }
+  },
+  "scale": {
+    "pixelLength": 1200,
+    "realLength": {
+      "value": 40,
+      "unit": "ft",
+      "source": "annotated"
+    },
+    "pixelsPerUnit": 30,
+    "source": "calibrated",
+    "confidence": "high"
+  },
+  "orientation": {
+    "northAngleDeg": 0,
+    "northAngleSource": "unknown",
+    "entranceFacing": "south",
+    "confidence": "medium"
+  },
+  "buildingFootprint": {
+    "points": [
+      {
+        "x": 240,
+        "y": 160
+      },
+      {
+        "x": 1000,
+        "y": 160
+      },
+      {
+        "x": 1000,
+        "y": 640
+      },
+      {
+        "x": 240,
+        "y": 640
+      }
+    ]
+  },
+  "rooms": [],
+  "walls": [],
+  "openings": [],
+  "annotations": [],
+  "adjacencyGraph": {},
+  "connectivityGraph": {},
+  "exteriorExposedRoomIds": [],
+  "incompleteBoundaryRoomIds": [],
+  "validationWarnings": [],
+  "unresolvedAmbiguities": [],
+  "createdAt": "2026-10-11T09:15:08.752Z"
+}

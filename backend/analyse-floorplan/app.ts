@@ -2,20 +2,31 @@ import { S3Event, S3Handler } from 'aws-lambda';
 import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { Readable } from 'stream';
 import * as path from 'path';
+import { extractFloorPlanGeometry } from './services/floorplan/geometry-extraction';
 
 const s3Client = new S3Client({});
 const EXPECTED_BUCKET = process.env.UPLOAD_BUCKET || '';
+const BEDROCK_MANTLE_API_KEY = process.env.BEDROCK_MANTLE_API_KEY;
+const BEDROCK_MANTLE_ENDPOINT = process.env.BEDROCK_MANTLE_ENDPOINT;
+const BEDROCK_MANTLE_MODEL_ID = process.env.BEDROCK_MANTLE_MODEL_ID || process.env.BEDROCK_MODEL_ID;
 const SUPPORTED_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
+const MIME_MAP: Record<string, 'image/png' | 'image/jpeg' | 'image/webp'> = {
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.webp': 'image/webp',
+};
 
 /**
- * Consumes a stream to safely calculate or confirm read without loading unbounded buffers into memory.
+ * Reads a stream fully into a Buffer.
+ * Used only for images, which are bounded in practice by S3 upload limits.
  */
-const drainStream = async (stream: Readable): Promise<number> => {
-    let bytesRead = 0;
+const streamToBuffer = async (stream: Readable): Promise<Buffer> => {
+    const chunks: Buffer[] = [];
     for await (const chunk of stream) {
-        bytesRead += chunk.length;
+        chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
     }
-    return bytesRead;
+    return Buffer.concat(chunks);
 };
 
 export const lambdaHandler: S3Handler = async (event: S3Event): Promise<void> => {
@@ -33,8 +44,8 @@ export const lambdaHandler: S3Handler = async (event: S3Event): Promise<void> =>
             continue;
         }
 
-        // Validate key prefix - must be under projects/{projectId}/{fileName}
-        // Never process results/ to avoid recursion or unintended processing
+        // Validate key prefix — must be under projects/{projectId}/{fileName}
+        // Never process results/ to avoid triggering recursion
         if (!sourceKey.startsWith('projects/')) {
             console.log(`Ignoring key outside projects/ prefix: ${sourceKey}`);
             continue;
@@ -58,10 +69,15 @@ export const lambdaHandler: S3Handler = async (event: S3Event): Promise<void> =>
             continue;
         }
 
+        const mimeType = MIME_MAP[ext];
         const fileNameWithoutExtension = parsedPath.name;
         const resultKey = `results/${projectId}/${fileNameWithoutExtension}.json`;
 
+        let fileSizeBytes: number = record.s3.object.size ?? 0;
+        let contentType = 'application/octet-stream';
+
         try {
+            // Download the image
             const getObjResponse = await s3Client.send(
                 new GetObjectCommand({
                     Bucket: sourceBucket,
@@ -69,40 +85,92 @@ export const lambdaHandler: S3Handler = async (event: S3Event): Promise<void> =>
                 }),
             );
 
-            const contentType = getObjResponse.ContentType || 'application/octet-stream';
-            let fileSizeBytes = getObjResponse.ContentLength;
-
-            // Stream handling: drain stream to verify readable content without loading unbounded memory
-            if (getObjResponse.Body instanceof Readable) {
-                const streamBytes = await drainStream(getObjResponse.Body);
-                if (fileSizeBytes === undefined || fileSizeBytes === null) {
-                    fileSizeBytes = streamBytes;
-                }
+            contentType = getObjResponse.ContentType || 'application/octet-stream';
+            if (getObjResponse.ContentLength) {
+                fileSizeBytes = getObjResponse.ContentLength;
             }
 
-            const analysisResult = {
+            if (!(getObjResponse.Body instanceof Readable)) {
+                throw new Error('S3 GetObject body is not a readable stream.');
+            }
+
+            const imageBytes = await streamToBuffer(getObjResponse.Body);
+            fileSizeBytes = imageBytes.length;
+
+            console.log(`Downloaded image: ${fileSizeBytes} bytes, type: ${contentType}`);
+            console.log(`Starting geometry extraction via Bedrock…`);
+
+            // Run geometry extraction via Bedrock Mantle
+            const floorPlanModel = await extractFloorPlanGeometry(
+                {
+                    imageBytes,
+                    mimeType,
+                    sourceName: sourceKey,
+                },
+                {
+                    ...(BEDROCK_MANTLE_ENDPOINT ? { endpointUrl: BEDROCK_MANTLE_ENDPOINT } : {}),
+                    ...(BEDROCK_MANTLE_API_KEY ? { apiKey: BEDROCK_MANTLE_API_KEY } : {}),
+                    ...(BEDROCK_MANTLE_MODEL_ID ? { modelId: BEDROCK_MANTLE_MODEL_ID } : {}),
+                },
+            );
+
+            // Embed source/provenance fields into the model
+            const result = {
+                ...floorPlanModel,
                 projectId,
                 sourceBucket,
                 sourceKey,
                 fileName,
+                fileSizeBytes,
                 contentType,
-                fileSizeBytes: fileSizeBytes ?? record.s3.object.size ?? 0,
                 status: 'RECEIVED',
-                message: 'Image successfully received and validated for floor-plan processing foundation.',
-                createdAt: new Date().toISOString(),
+                message: 'Floor-plan image received and geometry extraction completed. Thermal simulation phase not yet started.',
             };
 
             await s3Client.send(
                 new PutObjectCommand({
                     Bucket: sourceBucket,
                     Key: resultKey,
-                    Body: JSON.stringify(analysisResult, null, 2),
+                    Body: JSON.stringify(result, null, 2),
                     ContentType: 'application/json',
                 }),
             );
 
-            console.log(`Saved analysis placeholder result to s3://${sourceBucket}/${resultKey}`);
+            console.log(
+                `Geometry extraction complete — ` +
+                `rooms: ${floorPlanModel.rooms.length}, ` +
+                `walls: ${floorPlanModel.walls.length}, ` +
+                `openings: ${floorPlanModel.openings.length}, ` +
+                `warnings: ${floorPlanModel.validationWarnings.length}`,
+            );
+            console.log(`Result saved to s3://${sourceBucket}/${resultKey}`);
         } catch (err) {
+            // Write a FAILED result so callers can inspect the error without re-triggering
+            const failedResult = {
+                projectId,
+                sourceBucket,
+                sourceKey,
+                fileName,
+                contentType,
+                fileSizeBytes,
+                status: 'FAILED',
+                message: `Geometry extraction failed: ${(err as Error).message ?? String(err)}`,
+                createdAt: new Date().toISOString(),
+            };
+
+            try {
+                await s3Client.send(
+                    new PutObjectCommand({
+                        Bucket: sourceBucket,
+                        Key: resultKey,
+                        Body: JSON.stringify(failedResult, null, 2),
+                        ContentType: 'application/json',
+                    }),
+                );
+            } catch (writeErr) {
+                console.error(`Also failed to write FAILED result to S3:`, writeErr);
+            }
+
             console.error(`Failed processing s3://${sourceBucket}/${sourceKey}:`, err);
             throw err;
         }

@@ -57,15 +57,23 @@ Resources:
       Runtime: nodejs24.x
       Architectures:
       - x86_64
-      Timeout: 30
+      Timeout: 120
+      MemorySize: 512
       Environment:
         Variables:
           UPLOAD_BUCKET: !Ref UploadBucket
+          BEDROCK_MODEL_ID: us.anthropic.claude-opus-4-5-20251101-v1:0
       Policies:
         - S3ReadPolicy:
             BucketName: !Ref UploadBucket
         - S3WritePolicy:
             BucketName: !Ref UploadBucket
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource:
+                - arn:aws:bedrock:*::foundation-model/us.anthropic.claude-opus-4-5-20251101-v1:0
       Events:
         FloorplanUploadEvent:
           Type: S3
